@@ -1,0 +1,386 @@
+@import "base";
+
+/* ==========================================================================
+   Compass settings
+   ========================================================================== */
+$default-has-layout-approach: block;
+
+/* ==========================================================================
+   Base settings
+   ========================================================================== */
+$base-font-family: 'Open Sans', sans-serif;
+$base-font-size: 100%;
+$base-line-height: 130%;
+$light-font-color: white;
+$dark-font-color: #444;
+$link-color: #286EC8;
+
+$medium-breakpoint: 430px;
+$large-breakpoint: 900px;
+$huge-breakpoint: 1200px;
+
+/* ==========================================================================
+   General layout settings
+   ========================================================================== */
+$header-background-color: rgba(0, 0, 0, 0.75);
+$header-foreground-color: white;
+$header-hor-padding: 7%;
+$header-ver-padding: 24px;
+$header-font-family: 'Source Sans Pro', sans-serif;
+$header-font-weight: 700;
+$header-title-font-size-default: 28px;
+$header-title-font-size-medium: 38px;
+$header-nav-top-margin-default: 10px;
+$header-nav-top-margin-large: 2px;
+$header-nav-hover-color: #48C828;
+$header-nav-link-padding: 5px 12px 5px 12px;
+$header-nav-link-hor-margin: 2px;
+$header-nav-link-font-size-default: 20px;
+$header-nav-link-font-size-medium: 24px;
+$header-nav-link-transition: background-color 0.2s linear;
+
+$section-vertical-padding-small: 35px;
+$section-vertical-padding-medium: 100px;
+$section-vertical-padding-large: 150px;
+$section-vertical-padding-first-extra: 50px;
+$section-centering-width: 960px;
+$section-heading-font-family: 'Source Sans Pro', sans-serif;
+$section-background-home: #FFFFFF;
+$section-background-coding: #B93928;
+$section-background-contact: #2E2D2D;
+$section-background-cv: #2B5FBB;
+$section-background-cv-paper: white;
+
+$social-size-default: 32px;
+$social-size-medium: 40px;
+$social-size-large: 55px;
+
+/* ==========================================================================
+   Section specific layout settings
+   ========================================================================== */
+$home_picture-size-default: 125px;
+$home_picture-size-medium: $home_picture-size-default * 1.5;
+$home_picture-size-large: $home_picture-size-default * 2;
+
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+@mixin min-size($size) {
+	@if $size == 'medium' {
+		@media screen and (min-width: $medium-breakpoint) { @content; }
+	} @else if $size == 'large' {
+		@media screen and (min-width: $large-breakpoint) { @content; }
+	} @else if $size == 'huge' {
+		@media screen and (min-width: $huge-breakpoint) { @content; }
+	}
+}
+
+/* ==========================================================================
+   Base styles
+   ========================================================================== */
+html {
+	font: {
+		family: $base-font-family;
+		size: $base-font-size;
+	}
+	color: $light-font-color;
+	
+	@include min-size('medium') {
+		font-size: $base-font-size * 1.2;
+	}
+	
+	@include min-size('large') {
+		font-size: $base-font-size * 1.4;
+	}
+}
+
+p, h1, h2, h3, h4, h5 {
+	line-height: $base-line-height;
+	margin: {
+		top: 0.5em;
+		bottom: 0.5em;
+	}
+}
+
+a {
+	color: $link-color;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+h1 {
+	font: {
+		family: $section-heading-font-family;
+		weight: 200;
+		size: 2.5em;
+	}
+	
+	@include min-size('medium') {
+		font-size: 3em;
+	}
+	
+	@include min-size('large') {
+		font-size: 3.5em;
+	}
+}
+
+#browsehappy {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
+	
+#header-centering {
+	@extend .center;
+	@include clearfix;
+	width: 100%;
+	max-width: $huge-breakpoint;
+}
+
+.center{
+	margin: {
+		left: auto;
+		right: auto;
+	}
+}
+
+.social a {
+	display: block;
+	margin: 0;
+	overflow: hidden;
+	width: $social-size-default;
+	height: $social-size-default;
+	background-repeat: no-repeat;
+	background-size: cover;
+	@include sprite-column(1, $social-size-default);
+	@include hide-text;
+	&:hover {
+		@include sprite-column(2, $social-size-default);
+	}
+	@include min-size('medium') {
+		width: $social-size-medium;
+		height: $social-size-medium;
+		@include sprite-column(1, $social-size-medium);
+		&:hover {
+			@include sprite-column(2, $social-size-medium);
+		}
+	}
+	@include min-size('large') {
+		width: $social-size-large;
+		height: $social-size-large;
+		@include sprite-column(1, $social-size-large);
+		&:hover {
+			@include sprite-column(2, $social-size-large);
+		}
+	}
+}
+
+.section-centering {
+	@extend .center;
+	width: $section-centering-width;
+	max-width: 90%;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+header {
+	z-index: 10;
+	background-color: $header-background-color;
+	padding: {
+		top: $header-ver-padding;
+		bottom: $header-ver-padding;
+	}
+			
+	@include min-size('medium') {
+		position: fixed;
+		width: 100%
+	}
+			
+	@include min-size('large') {
+		width: 100% - ($header-hor-padding * 2);
+		padding: {
+			left: $header-hor-padding;
+			right: $header-hor-padding;
+		}
+	}
+	
+	h1 {
+		margin: inherit;
+		color: $header-foreground-color;
+		line-height: inherit;
+		font: {
+			family: $header-font-family;
+			weight: $header-font-weight;
+			size: $header-title-font-size-default;
+		}
+		text-align: center;
+		
+		@include min-size('medium') {
+			font-size: $header-title-font-size-medium;
+		}
+		
+		@include min-size('large') {
+			float: left;
+		}
+	}
+	
+	nav {
+		text-align: center;
+		margin-top: $header-nav-top-margin-default;
+		
+		@include min-size('large') {
+			float: right;
+			margin-top: $header-nav-top-margin-large;
+		}
+		
+		li {
+			@include min-size('medium') {
+				display: inline-block;
+			}
+		}
+		
+		a {
+			display: block;
+			color: $header-foreground-color * 0.7;
+			padding: $header-nav-link-padding;
+			font: {
+				family: $header-font-family;
+				size: $header-nav-link-font-size-default;
+			}
+			&:hover {
+				text-decoration: none;
+				color: $header-foreground-color;
+			}
+		
+			@include min-size('medium') {
+				margin: {
+					left: $header-nav-link-hor-margin;
+					right: $header-nav-link-hor-margin;
+				}
+				font-size: $header-nav-link-font-size-medium;
+				@include transition($header-nav-link-transition);
+				&.active {
+					color: $header-foreground-color;
+				}
+			}
+		}
+	}
+}
+
+section {
+	text-align: center;
+		
+	padding: {
+		top: $section-vertical-padding-small;
+		bottom: $section-vertical-padding-small;
+	}
+			
+	@include min-size('medium') {
+		
+		padding: {
+			top: $section-vertical-padding-medium;
+			bottom: $section-vertical-padding-medium;
+		}
+		
+		&:first-of-type {
+			padding-top: $section-vertical-padding-large + $section-vertical-padding-first-extra;
+		}
+	}
+		
+	@include min-size('large') {
+		padding: {
+			top: $section-vertical-padding-large;
+			bottom: $section-vertical-padding-large;
+		}
+		
+		&:first-of-type {
+			padding-top:  $section-vertical-padding-large + $section-vertical-padding-first-extra;
+		}
+	}
+}
+
+#home {
+	background-color: $section-background-home;
+	color: $dark-font-color;
+	
+	img {
+		width: $home_picture-size-default;
+		height: $home_picture-size-default;
+		@include border-radius($home_picture-size-default / 2);
+		border-width: 3px;
+		border-style: solid;
+		border-color: #888;
+		
+		@include min-size('medium') {
+			width: $home_picture-size-medium;
+			height: $home_picture-size-medium;
+			@include border-radius($home_picture-size-medium / 2);
+		}
+		
+		@include min-size('large') {
+			width: $home_picture-size-large;
+			height: $home_picture-size-large;
+			@include border-radius($home_picture-size-large / 2);
+		}
+	}
+}
+
+#coding {
+	background-color: $section-background-coding;
+}
+
+#cv {
+	background-color: $section-background-cv;
+	#cv-wrapper #cv-content {
+		padding: 50px;
+		background-color: $section-background-cv-paper;
+		color: $dark-font-color;
+	}
+	#cv-arrow {
+		display: none;
+		margin-left: auto;
+		margin-right: auto;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 30px 40px 0 40px;
+		border-color: #ffffff transparent transparent transparent;
+		cursor: pointer;
+	}
+}
+
+.js #cv {
+	#cv-wrapper {
+		height: 0; // Expands with click
+		overflow: hidden;
+		position: relative;
+		#cv-content {
+			position: absolute;
+			bottom: 0;
+		}
+	}
+	#cv-arrow {
+		display: inherit;
+	}
+}
+
+#contact {
+	background-color: $section-background-contact;
+	ul.social {
+		margin: 0;
+		padding: 0;
+		text-align: center;
+		li {
+			display: inline-block;
+			margin: {
+				left: 5px;
+				right: 5px;
+			}
+		}
+	}
+}
