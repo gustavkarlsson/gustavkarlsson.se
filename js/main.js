@@ -84,6 +84,7 @@ var cvHandler = (function () {
 			height: height
 		}, function () {
 			status = fixed;
+			setActiveMenuItemPlugin.exec(namedAnchors);
 		});
 	}
 
