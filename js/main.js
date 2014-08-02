@@ -1,3 +1,16 @@
+// Static members
+
+var header = $("header");
+var navLinks = header.find("nav a");
+var namedAnchors = navLinks.map(function () {
+	var anchor = $($(this).attr("href"));
+	if (anchor.length === 1 && anchor.selector.charAt(0) === "#") {
+		return anchor;
+	}
+});
+var cvWrapper = $("#cv-wrapper");
+var cvContent = $("#cv-content");
+
 // Plugins
 
 var setActiveMenuItemPlugin = (function () {
@@ -60,41 +73,55 @@ var setActiveMenuItemPlugin = (function () {
 })();
 
 var cvHandler = (function () {
-	var status = "fixed";
+	var fixed = "fixed";
+	var opening = "opening";
+	var closing = "closing";
 
-	function setFixed() {
-		status = "fixed";
-	}
+	var status = fixed;
 
-	function animateHeight(height) {
-		cvWrapper.stop().animate({
+	function animateHeight(element, height) {
+		element.stop().animate({
 			height: height
-		}, setFixed);
+		}, function () {
+			status = fixed;
+		});
 	}
 
-	function show(cvWrapper, cvContent) {
-		animateHeight(cvContent.outerHeight());
-		status = "showing";
+	function setHeight(element, height) {
+		element.stop().height(height);
 	}
 
-	function hide(cvWrapper) {
-		animateHeight(0);
-		status = "hiding";
+	function open(animate) {
+		if (animate === true) {
+			animateHeight(cvWrapper, cvContent.outerHeight());
+		} else {
+			setHeight(cvWrapper, cvContent.outerHeight());
+		}
+		status = opening;
+	}
+
+	function close(animate) {
+		if (animate === true) {
+			animateHeight(cvWrapper, 0);
+		} else {
+			setHeight(cvWrapper, 0);
+		}
+		status = closing;
 	}
 
 	return {
-		toggle: function (cvWrapper, cvContent) {
-			if (status === "showing" || (status === "fixed" && cvWrapper.height() > 0)) {
-				hide(cvWrapper);
+		toggle: function () {
+			if (status === opening || (status === fixed && cvWrapper.height() > 0)) {
+				close(true);
 			} else {
-				show(cvWrapper, cvContent);
+				open(true);
 			}
 		},
-		updateSize: function (cvWrapper, cvContent) {
-			if (status === "showing" || (status === "fixed" && cvWrapper.height() > 0)) {
-				cvWrapper.height(cvContent.outerHeight());
+		updateSize: function () {
+			if (status === opening || (status === fixed && cvWrapper.height() > 0)) {
+				open(false);
 			} else {
-				cvWrapper.height(0);
+				close(false);
 			}
 		}
 	}
@@ -126,28 +153,14 @@ function scrollToAnchor(link, event, offsetElement) {
 	event.preventDefault();
 }
 
-// Static members
-
-var header = $("header");
-var navLinks = header.find("nav a");
-var namedAnchors = navLinks.map(function () {
-	var anchor = $($(this).attr("href"));
-	if (anchor.length === 1 && anchor.selector.charAt(0) === "#") {
-		return anchor;
-	}
-});
-var cvWrapper = $("#cv-wrapper");
-var cvContent = $("#cv-content");
-var cvToggle = $("#cv-arrow");
-
 // Binding
 
 navLinks.click(function (event) {
 	scrollToAnchor($(this), event, header);
 });
 
-cvToggle.click(function (event) {
-	cvHandler.toggle(cvWrapper, cvContent);
+$("#cv-arrow").click(function (event) {
+	cvHandler.toggle();
 });
 
 $(window).scroll(function () {
@@ -156,7 +169,7 @@ $(window).scroll(function () {
 
 $(window).resize(function () {
 	setActiveMenuItemPlugin.exec(namedAnchors);
-	cvHandler.updateSize(cvWrapper, cvContent);
+	cvHandler.updateSize();
 });
 
 $(document).ready(function () {
