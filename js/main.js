@@ -78,48 +78,59 @@ var cvHandler = (function () {
 	var closing = "closing";
 
 	var status = fixed;
+	
+	function setStatus(newStatus) {
+		status = newStatus;
+	}
+	
+	function isOpeningOrOpen() {
+		return (status === opening || (status === fixed && cvWrapper.height() > 0));
+	}
 
 	function animateHeight(element, height) {
 		element.stop().animate({
 			height: height
 		}, function () {
-			status = fixed;
+			setStatus(fixed);
 			setActiveMenuItemPlugin.exec(namedAnchors);
 		});
 	}
 
 	function setHeight(element, height) {
 		element.stop().height(height);
+		setActiveMenuItemPlugin.exec(namedAnchors);
 	}
 
 	function open(animate) {
 		if (animate === true) {
 			animateHeight(cvWrapper, cvContent.outerHeight());
+			setStatus(opening);
 		} else {
 			setHeight(cvWrapper, cvContent.outerHeight());
+			setStatus(fixed);
 		}
-		status = opening;
 	}
 
 	function close(animate) {
 		if (animate === true) {
 			animateHeight(cvWrapper, 0);
+			setStatus(closing);
 		} else {
 			setHeight(cvWrapper, 0);
+			setStatus(fixed);
 		}
-		status = closing;
 	}
 
 	return {
 		toggle: function () {
-			if (status === opening || (status === fixed && cvWrapper.height() > 0)) {
+			if (isOpeningOrOpen()) {
 				close(true);
 			} else {
 				open(true);
 			}
 		},
 		updateSize: function () {
-			if (status === opening || (status === fixed && cvWrapper.height() > 0)) {
+			if (isOpeningOrOpen()) {
 				open(false);
 			} else {
 				close(false);
