@@ -230,7 +230,7 @@ html {
 		}
 
 		a {
-			@include transition(0.3s);
+			@include transition(color 0.3s);
 		}
 		.section-centering {
 			@extend .center;
