@@ -9,7 +9,7 @@ $default-has-layout-approach: block;
 
 // Colors
 $black-see-through: rgba(0, 0, 0, 0.75);
-$almost-white: #EEE;
+$almost-white: #eeeeee;
 $almost-black: #2e2d2d;
 $red: #b93928;
 $blue: #2b5fbb;
@@ -24,40 +24,27 @@ $source-sans-pro: "Source Sans Pro", sans-serif;
 $medium-breakpoint: 430px;
 $large-breakpoint: 900px;
 $huge-breakpoint: 1200px;
-
-/* ==========================================================================
-   General layout settings
-   ========================================================================== */
-
-$section-vertical-padding-small: 35px;
-$section-vertical-padding-medium: 100px;
-$section-vertical-padding-large: 150px;
-$section-vertical-padding-first-extra: 50px;
 $section-centering-width: 960px;
-$section-heading-font-family: "Source Sans Pro", sans-serif;
-
-$social-size-default: 32px;
-$social-size-medium: 40px;
-$social-size-large: 55px;
 
 /* ==========================================================================
    Mixins
    ========================================================================== */
-@mixin min-size($size) {
-	@if $size == "medium" {
-		@media screen and (min-width: $medium-breakpoint) {
-			@content;
-		}
+
+@mixin breakpoint-medium {
+	@media screen and (min-width: $medium-breakpoint) {
+		@content;
 	}
-	@else if $size == "large" {
-		@media screen and (min-width: $large-breakpoint) {
-			@content;
-		}
+}
+
+@mixin breakpoint-large {
+	@media screen and (min-width: $large-breakpoint) {
+		@content;
 	}
-	@else if $size == "huge" {
-		@media screen and (min-width: $huge-breakpoint) {
-			@content;
-		}
+}
+
+@mixin breakpoint-huge {
+	@media screen and (min-width: $huge-breakpoint) {
+		@content;
 	}
 }
 
@@ -70,12 +57,12 @@ $social-size-large: 55px;
 	&::before {
 		margin-right: $amount;
 		content: $before;
-		@include translateX($amount*2);
+		@include translateX($amount * 2);
 	}
 	&::after {
 		margin-left: $amount;
 		content: $after;
-		@include translateX(-$amount*2);
+		@include translateX(-$amount * 2);
 	}
 	&:hover::before,
 	&:hover::after,
@@ -87,64 +74,8 @@ $social-size-large: 55px;
 }
 
 /* ==========================================================================
-   Base styles
+   Classes
    ========================================================================== */
-html {
-	$base-font-size: 100%;
-	font: {
-		family: $open-sans;
-		size: $base-font-size;
-	};
-	color: $light-font-color;
-	@include min-size("medium") {
-		font-size: $base-font-size * 1.2;
-	}
-
-	@include min-size("large") {
-		font-size: $base-font-size * 1.4;
-	}
-}
-
-p, h1, h2, h3, h4, h5 {
-	line-height: 130%;
-	margin: {
-		top: 0.5em;
-		bottom: 0.5em;
-	};
-}
-
-a {
-	color: inherit;
-}
-
-h1 {
-	font: {
-		family: $section-heading-font-family;
-		weight: 200;
-		size: 2.5em;
-	};
-	@include min-size("medium") {
-		font-size: 3em;
-	}
-
-	@include min-size("large") {
-		font-size: 3.5em;
-	}
-}
-
-#browsehappy {
-	margin: 0.2em 0;
-	background: #ccc;
-	color: #000;
-	padding: 0.2em 0;
-}
-
-#header-centering {
-	@extend .center;
-	@include clearfix;
-	width: 100%;
-	max-width: $huge-breakpoint;
-}
 
 .center {
 	margin: {
@@ -153,244 +84,307 @@ h1 {
 	};
 }
 
-.social a {
-	display: block;
-	margin: 0;
-	overflow: hidden;
-	width: $social-size-default;
-	height: $social-size-default;
-	background-repeat: no-repeat;
-	background-size: cover;
-	@include sprite-column(1, $social-size-default);
-	@include hide-text;
-	&:hover {
-		@include sprite-column(2, $social-size-default);
+/* ==========================================================================
+   Base styles
+   ========================================================================== */
+html {
+	p, h1, h2, h3, h4, h5 {
+		line-height: 130%;
+		margin: {
+			top: 0.5em;
+			bottom: 0.5em;
+		};
 	}
-	@include min-size("medium") {
-		width: $social-size-medium;
-		height: $social-size-medium;
-		@include sprite-column(1, $social-size-medium);
-		&:hover {
-			@include sprite-column(2, $social-size-medium);
-		}
+	a {
+		color: inherit;
+	}
+	$base-font-size: 100%;
+	font: {
+		family: $open-sans;
+		size: $base-font-size;
+	};
+	@include breakpoint-medium {
+		font-size: $base-font-size * 1.2;
 	}
 
-	@include min-size("large") {
-		width: $social-size-large;
-		height: $social-size-large;
-		@include sprite-column(1, $social-size-large);
-		&:hover {
-			@include sprite-column(2, $social-size-large);
+	@include breakpoint-large {
+		font-size: $base-font-size * 1.4;
+	}
+
+	#browsehappy {
+		margin: 0.2em 0;
+		background: #ccc;
+		color: #000;
+		padding: 0.2em 0;
+	}
+	header {
+		$header-foreground-color: $light-font-color;
+		z-index: 10;
+		background-color: $black-see-through;
+		$header-ver-padding: 24px;
+		padding: {
+			top: $header-ver-padding;
+			bottom: $header-ver-padding;
+		};
+		@include breakpoint-medium {
+			position: fixed;
+			width: 100%;
+		}
+
+		@include breakpoint-large {
+			$header-hor-padding: 5%;
+			width: 100% - $header-hor-padding * 2;
+			padding: {
+				left: $header-hor-padding;
+				right: $header-hor-padding;
+			};
+		}
+
+		#header-centering {
+			@extend .center;
+			@include clearfix;
+			width: 100%;
+			max-width: $huge-breakpoint;
+		}
+		h1 {
+			margin: inherit;
+			color: $header-foreground-color;
+			line-height: inherit;
+			font: {
+				family: $source-sans-pro;
+				weight: bold;
+				size: 28px;
+			};
+			text-align: center;
+			@include breakpoint-medium {
+				font-size: 38px;
+			}
+
+			@include breakpoint-large {
+				float: left;
+			}
+		}
+		nav {
+			text-align: center;
+			margin-top: 10px;
+			@include breakpoint-large {
+				float: right;
+				margin-top: 2px;
+			}
+
+			li {
+				@include breakpoint-medium {
+					display: inline-block;
+				}
+			}
+			a {
+				display: block;
+				color: $header-foreground-color * 0.7;
+				padding: 7px 0 7px 0;
+				text-decoration: none;
+				font: {
+					family: $source-sans-pro;
+					size: 20px;
+				};
+				@include breakpoint-medium {
+					font-size: 22px;
+					@include transition(color 0.2s linear);
+					&.active {
+						color: $header-foreground-color * 1.2;
+					}
+				}
+
+				@include hover-expand-brackets("[", "]");
+			}
 		}
 	}
-}
+	section {
+		$section-vertical-padding-small: 35px;
+		$section-vertical-padding-medium: 100px;
+		$section-vertical-padding-large: 150px;
+		$section-vertical-padding-first-extra: 50px;
+		text-align: center;
+		padding: {
+			top: $section-vertical-padding-small;
+			bottom: $section-vertical-padding-small;
+		};
+		@include breakpoint-medium {
+			padding: {
+				top: $section-vertical-padding-medium;
+				bottom: $section-vertical-padding-medium;
+			};
+			&:first-of-type {
+				padding-top: $section-vertical-padding-large + $section-vertical-padding-first-extra;
+			}
+		}
 
-.section-centering {
-	@extend .center;
-	width: $section-centering-width;
-	max-width: 90%;
+		@include breakpoint-large {
+			padding: {
+				top: $section-vertical-padding-large;
+				bottom: $section-vertical-padding-large;
+			};
+			&:first-of-type {
+				padding-top: $section-vertical-padding-large + $section-vertical-padding-first-extra;
+			}
+		}
+
+		.section-centering {
+			@extend .center;
+			width: $section-centering-width;
+			max-width: 90%;
+			h1 {
+				font: {
+					family: "Source Sans Pro", sans-serif;
+					weight: 200;
+					size: 2.5em;
+				};
+				@include breakpoint-medium {
+					font-size: 3em;
+				}
+
+				@include breakpoint-large {
+					font-size: 3.5em;
+				}
+			}
+		}
+		&#home {
+			background-color: $almost-white;
+			color: $dark-font-color;
+			#photo {
+				$home-picture-size-default: 125px;
+				width: $home-picture-size-default;
+				height: $home-picture-size-default;
+				@include border-radius($home-picture-size-default / 2);
+				border-width: 3px;
+				border-style: solid;
+				border-color: #888;
+				@include breakpoint-medium {
+					$home-picture-size-medium: $home-picture-size-default * 1.5;
+					width: $home-picture-size-medium;
+					height: $home-picture-size-medium;
+					@include border-radius($home-picture-size-medium / 2);
+				}
+
+				@include breakpoint-large {
+					$home-picture-size-large: $home-picture-size-default * 2;
+					width: $home-picture-size-large;
+					height: $home-picture-size-large;
+					@include border-radius($home-picture-size-large / 2);
+				}
+			}
+		}
+		&#coding {
+			color: $light-font-color;
+			background-color: $red;
+		}
+		&#cv {
+			color: $light-font-color;
+			background-color: $blue;
+			$cv-content-background-color: $almost-white;
+			#cv-wrapper {
+				height: 0;
+				// Expands with click
+				overflow: hidden;
+				position: relative;
+				#cv-content {
+					position: absolute;
+					bottom: 0;
+					background-color: $cv-content-background-color;
+					color: $dark-font-color;
+					padding: 30px;
+					@include breakpoint-medium {
+						padding: 50px;
+					}
+
+					@include breakpoint-large {
+						padding: 70px;
+					}
+				}
+			}
+			#cv-arrow {
+				margin-left: auto;
+				margin-right: auto;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-color: $cv-content-background-color transparent transparent transparent;
+				cursor: pointer;
+				border-width: 18px 24px 0 24px;
+				@include breakpoint-medium {
+					border-width: 24px 32px 0 32px;
+				}
+
+				@include breakpoint-large {
+					border-width: 30px 40px 0 40px;
+				}
+			}
+		}
+		&#contact {
+			color: $light-font-color;
+			background-color: $almost-black;
+			ul.social {
+				margin: 0;
+				padding: 0;
+				text-align: center;
+				li {
+					display: inline-block;
+					margin: {
+						left: 5px;
+						right: 5px;
+					};
+					a {
+						$social-size-default: 32px;
+						display: block;
+						margin: 0;
+						overflow: hidden;
+						width: $social-size-default;
+						height: $social-size-default;
+						background-repeat: no-repeat;
+						background-size: cover;
+						@include sprite-column(1, $social-size-default);
+						@include hide-text;
+						&:hover {
+							@include sprite-column(2, $social-size-default);
+						}
+						@include breakpoint-medium {
+							$social-size-medium: 40px;
+							width: $social-size-medium;
+							height: $social-size-medium;
+							@include sprite-column(1, $social-size-medium);
+							&:hover {
+								@include sprite-column(2, $social-size-medium);
+							}
+						}
+
+						@include breakpoint-large {
+							$social-size-large: 55px;
+							width: $social-size-large;
+							height: $social-size-large;
+							@include sprite-column(1, $social-size-large);
+							&:hover {
+								@include sprite-column(2, $social-size-large);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 /* ==========================================================================
    Layout
    ========================================================================== */
 
-header {
-	$header-foreground-color: $light-font-color;
-	
-	z-index: 10;
-	background-color: $black-see-through;
-	$header-ver-padding: 24px;
-	padding: {
-		top: $header-ver-padding;
-		bottom: $header-ver-padding;
-	};
-	@include min-size("medium") {
-		position: fixed;
-		width: 100%;
-	}
-
-	@include min-size("large") {
-		$header-hor-padding: 5%;
-		width: 100% - $header-hor-padding * 2;
-		padding: {
-			left: $header-hor-padding;
-			right: $header-hor-padding;
-		};
-	}
-
-	h1 {
-		margin: inherit;
-		color: $header-foreground-color;
-		line-height: inherit;
-		font: {
-			family: $source-sans-pro;
-			weight: bold;
-			size: 28px;
-		};
-		text-align: center;
-		@include min-size("medium") {
-			font-size: 38px;
-		}
-
-		@include min-size("large") {
-			float: left;
-		}
-	}
-	nav {
-		text-align: center;
-		margin-top: 10px;
-		@include min-size("large") {
-			float: right;
-			margin-top: 2px;
-		}
-
-		li {
-			@include min-size("medium") {
-				display: inline-block;
-			}
-		}
-		a {
-			display: block;
-			color: $header-foreground-color * 0.7;
-			padding: 7px 0 7px 0;
-			text-decoration: none;
-			font: {
-				family: $source-sans-pro;
-				size: 20px;
-			};
-			@include min-size("medium") {
-				font-size: 22px;
-				@include transition(color 0.2s linear);
-				&.active {
-					color: $header-foreground-color;
-				}
-			}
-
-			@include hover-expand-brackets("[", "]");
-		}
-	}
-}
-
-section {
-	text-align: center;
-	padding: {
-		top: $section-vertical-padding-small;
-		bottom: $section-vertical-padding-small;
-	};
-	@include min-size("medium") {
-		padding: {
-			top: $section-vertical-padding-medium;
-			bottom: $section-vertical-padding-medium;
-		};
-		&:first-of-type {
-			padding-top: $section-vertical-padding-large + $section-vertical-padding-first-extra;
-		}
-	}
-
-	@include min-size("large") {
-		padding: {
-			top: $section-vertical-padding-large;
-			bottom: $section-vertical-padding-large;
-		};
-		&:first-of-type {
-			padding-top: $section-vertical-padding-large + $section-vertical-padding-first-extra;
-		}
-	}
-}
-
-#home {
-	background-color: $almost-white;
-	color: $dark-font-color;
-	img#photo {
-		$home-picture-size-default: 125px;
-		width: $home-picture-size-default;
-		height: $home-picture-size-default;
-		@include border-radius($home-picture-size-default / 2);
-		border-width: 3px;
-		border-style: solid;
-		border-color: #888;
-		@include min-size("medium") {
-			$home-picture-size-medium: $home-picture-size-default * 1.5;
-			width: $home-picture-size-medium;
-			height: $home-picture-size-medium;
-			@include border-radius($home-picture-size-medium / 2);
-		}
-
-		@include min-size("large") {
-			$home-picture-size-large: $home-picture-size-default * 2;
-			width: $home-picture-size-large;
-			height: $home-picture-size-large;
-			@include border-radius($home-picture-size-large / 2);
-		}
-	}
-}
-
-#coding {
-	background-color: $red;
-}
-
-#cv {
-	background-color: $blue;
-	$cv-content-background-color: $almost-white;
-	#cv-wrapper #cv-content {
-		background-color: $cv-content-background-color;
-		color: $dark-font-color;
-		padding: 30px;
-		@include min-size("medium") {
-			padding: 50px;
-		}
-		@include min-size("large") {
-			padding: 70px;
+html.no-js section#cv .section-centering {
+	#cv-wrapper {
+		height: inherit;
+		position: inherit;
+		#cv-content {
+			position: inherit;
 		}
 	}
 	#cv-arrow {
 		display: none;
-		margin-left: auto;
-		margin-right: auto;
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-color: $cv-content-background-color transparent transparent transparent;
-		cursor: pointer;
-		border-width: 18px 24px 0 24px;
-		@include min-size("medium") {
-			border-width: 24px 32px 0 32px;
-		}
-		@include min-size("large") {
-			border-width: 30px 40px 0 40px;
-		}
-	}
-}
-
-.js #cv {
-	#cv-wrapper {
-		height: 0;
-		// Expands with click
-		overflow: hidden;
-		position: relative;
-		#cv-content {
-			position: absolute;
-			bottom: 0;
-		}
-	}
-	#cv-arrow {
-		display: inherit;
-	}
-}
-
-#contact {
-	background-color: $almost-black;
-	ul.social {
-		margin: 0;
-		padding: 0;
-		text-align: center;
-		li {
-			display: inline-block;
-			margin: {
-				left: 5px;
-				right: 5px;
-			};
-		}
 	}
 }
