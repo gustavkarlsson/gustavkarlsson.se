@@ -13,6 +13,7 @@ $almost-white: #eeeeee;
 $almost-black: #2e2d2d;
 $red: #b93928;
 $blue: #2b5fbb;
+$yellow: #ffe57e;
 $light-font-color: $almost-white;
 $dark-font-color: $almost-black;
 
@@ -250,6 +251,12 @@ html {
 		&#home {
 			background-color: $almost-white;
 			color: $dark-font-color;
+			a {
+				color: $blue;
+				&:hover {
+					color: lighten($blue, 20%);
+				}
+			}
 			#photo {
 				$home-picture-size-default: 125px;
 				width: $home-picture-size-default;
@@ -274,12 +281,18 @@ html {
 			}
 		}
 		&#coding {
-			color: $light-font-color;
 			background-color: $red;
+			color: $light-font-color;
+			a {
+				color: $yellow;
+				&:hover {
+					color: darken($yellow, 20%);
+				}
+			}
 		}
 		&#cv {
-			color: $light-font-color;
 			background-color: $blue;
+			color: $light-font-color;
 			$cv-content-background-color: $almost-white;
 			#cv-wrapper {
 				height: 0;
@@ -320,8 +333,8 @@ html {
 			}
 		}
 		&#contact {
-			color: $light-font-color;
 			background-color: $almost-black;
+			color: $light-font-color;
 			ul.social {
 				margin: 0;
 				padding: 0;
