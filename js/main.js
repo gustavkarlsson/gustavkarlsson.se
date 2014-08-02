@@ -1,12 +1,9 @@
 // Static members
 
 var header = $("header");
-var navLinks = header.find("nav a");
+var navLinks = $("nav a[href^=\"#\"]"); // All nav links which href starts with "#"
 var namedAnchors = navLinks.map(function () {
-	var anchor = $($(this).attr("href"));
-	if (anchor.length === 1 && anchor.selector.charAt(0) === "#") {
-		return anchor;
-	}
+	return $($(this).attr("href"));
 });
 var cvWrapper = $("#cv-wrapper");
 var cvContent = $("#cv-content");
@@ -47,15 +44,15 @@ var setActiveMenuItemPlugin = (function () {
 	}
 
 	return {
-		exec: function (sections) {
+		exec: function () {
 			var currentElement;
 
 			if (isScrollbarAtTop()) {
-				currentElement = sections[0];
+				currentElement = namedAnchors[0];
 			} else if (isScrollbarAtBottom()) {
-				currentElement = sections[sections.length - 1];
+				currentElement = namedAnchors[namedAnchors.length - 1];
 			} else {
-				currentElement = getCenterElement(sections, header.outerHeight());
+				currentElement = getCenterElement(namedAnchors, header.outerHeight());
 			}
 
 			var currentId = currentElement && currentElement.length ? currentElement[0].id : "";
@@ -78,11 +75,11 @@ var cvHandler = (function () {
 	var closing = "closing";
 
 	var status = fixed;
-	
+
 	function setStatus(newStatus) {
 		status = newStatus;
 	}
-	
+
 	function isOpeningOrOpen() {
 		return (status === opening || (status === fixed && cvWrapper.height() > 0));
 	}
@@ -167,7 +164,7 @@ function scrollToAnchor(link, event, offsetElement) {
 
 // Binding
 
-navLinks.click(function (event) {
+$("a[href^=\"#\"]").click(function (event) { // All links which href starts with "#"
 	scrollToAnchor($(this), event, header);
 });
 
@@ -176,16 +173,16 @@ $("#cv-arrow").click(function (event) {
 });
 
 $(window).scroll(function () {
-	setActiveMenuItemPlugin.exec(namedAnchors);
+	setActiveMenuItemPlugin.exec();
 });
 
 $(window).resize(function () {
-	setActiveMenuItemPlugin.exec(namedAnchors);
+	setActiveMenuItemPlugin.exec();
 	cvHandler.updateSize();
 });
 
 $(document).ready(function () {
-	setActiveMenuItemPlugin.exec(namedAnchors); // Execute once
+	setActiveMenuItemPlugin.exec(); // Execute once
 });
 
 // Initialization
