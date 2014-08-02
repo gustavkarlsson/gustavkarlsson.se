@@ -8,11 +8,19 @@ $default-has-layout-approach: block;
 /* ==========================================================================
    Base settings
    ========================================================================== */
+
+//Colors
+$black-see-through: rgba(0, 0, 0, 0.75);
+$almost-white: #EEE;
+$red: #b93928;
+$blue: #2b5fbb;
+$dark-gray: #2e2d2d;
+
 $base-font-family: "Open Sans", sans-serif;
 $base-font-size: 100%;
 $base-line-height: 130%;
-$light-font-color: white;
-$dark-font-color: #444444;
+$light-font-color: $almost-white;
+$dark-font-color: $dark-gray;
 
 $medium-breakpoint: 430px;
 $large-breakpoint: 900px;
@@ -21,22 +29,21 @@ $huge-breakpoint: 1200px;
 /* ==========================================================================
    General layout settings
    ========================================================================== */
-$header-background-color: rgba(0, 0, 0, 0.75);
-$header-foreground-color: white;
+$header-background-color: $black-see-through;
+$header-foreground-color: $light-font-color;
 $header-hor-padding: 5%;
 $header-ver-padding: 24px;
 $header-font-family: "Source Sans Pro", sans-serif;
-$header-font-weight: 700;
+$header-font-weight: 800;
 $header-title-font-size-default: 28px;
 $header-title-font-size-medium: 38px;
 $header-nav-top-margin-default: 10px;
 $header-nav-top-margin-large: 2px;
-$header-nav-hover-color: #48c828;
 $header-nav-link-padding: 7px 0 7px 0;
 $header-nav-link-hor-margin: 2px;
 $header-nav-link-font-size-default: 20px;
 $header-nav-link-font-size-medium: 22px;
-$header-nav-link-transition: background-color 0.2s linear;
+$header-nav-link-transition: color 0.2s linear;
 
 $section-vertical-padding-small: 35px;
 $section-vertical-padding-medium: 100px;
@@ -44,22 +51,10 @@ $section-vertical-padding-large: 150px;
 $section-vertical-padding-first-extra: 50px;
 $section-centering-width: 960px;
 $section-heading-font-family: "Source Sans Pro", sans-serif;
-$section-background-home: white;
-$section-background-coding: #b93928;
-$section-background-contact: #2e2d2d;
-$section-background-cv: #2b5fbb;
-$section-background-cv-paper: white;
 
 $social-size-default: 32px;
 $social-size-medium: 40px;
 $social-size-large: 55px;
-
-/* ==========================================================================
-   Section specific layout settings
-   ========================================================================== */
-$home_picture-size-default: 125px;
-$home_picture-size-medium: $home_picture-size-default * 1.5;
-$home_picture-size-large: $home_picture-size-default * 2;
 
 /* ==========================================================================
    Mixins
@@ -82,36 +77,28 @@ $home_picture-size-large: $home_picture-size-default * 2;
 	}
 }
 
-@mixin bracket-hover($before: "[", $after: "]") {
+@mixin hover-expand-brackets($before: "[", $after: "]", $amount: 10px) {
 	&::before, &::after {
 		display: inline-block;
 		opacity: 0;
-		-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-		-moz-transition: -moz-transform 0.3s, opacity 0.2s;
-		transition: transform 0.3s, opacity 0.2s;
+		@include transition(transform 0.3s, opacity 0.2s);
 	}
 	&::before {
-		margin-right: 10px;
+		margin-right: $amount;
 		content: $before;
-		-webkit-transform: translateX(20px);
-		-moz-transform: translateX(20px);
-		transform: translateX(20px);
+		@include translateX($amount*2);
 	}
 	&::after {
-		margin-left: 10px;
+		margin-left: $amount;
 		content: $after;
-		-webkit-transform: translateX(-20px);
-		-moz-transform: translateX(-20px);
-		transform: translateX(-20px);
+		@include translateX(-$amount*2);
 	}
 	&:hover::before,
 	&:hover::after,
 	&:focus::before,
 	&:focus::after {
 		opacity: 1;
-		-webkit-transform: translateX(0px);
-		-moz-transform: translateX(0px);
-		transform: translateX(0px);
+		@include translateX(0px);
 	}
 }
 
@@ -284,10 +271,6 @@ header {
 				size: $header-nav-link-font-size-default;
 			};
 			@include min-size("medium") {
-				margin: {
-					//left: $header-nav-link-hor-margin;
-					//right: $header-nav-link-hor-margin;
-				};
 				font-size: $header-nav-link-font-size-medium;
 				@include transition($header-nav-link-transition);
 				&.active {
@@ -295,7 +278,7 @@ header {
 				}
 			}
 
-			@include bracket-hover("[", "]");
+			@include hover-expand-brackets("[", "]");
 		}
 	}
 }
@@ -328,37 +311,41 @@ section {
 }
 
 #home {
-	background-color: $section-background-home;
+	background-color: $almost-white;
 	color: $dark-font-color;
-	img {
-		width: $home_picture-size-default;
-		height: $home_picture-size-default;
-		@include border-radius($home_picture-size-default / 2);
+	img#photo {
+		$home-picture-size-default: 125px;
+		width: $home-picture-size-default;
+		height: $home-picture-size-default;
+		@include border-radius($home-picture-size-default / 2);
 		border-width: 3px;
 		border-style: solid;
 		border-color: #888;
 		@include min-size("medium") {
-			width: $home_picture-size-medium;
-			height: $home_picture-size-medium;
-			@include border-radius($home_picture-size-medium / 2);
+			$home-picture-size-medium: $home-picture-size-default * 1.5;
+			width: $home-picture-size-medium;
+			height: $home-picture-size-medium;
+			@include border-radius($home-picture-size-medium / 2);
 		}
 
 		@include min-size("large") {
-			width: $home_picture-size-large;
-			height: $home_picture-size-large;
-			@include border-radius($home_picture-size-large / 2);
+			$home-picture-size-large: $home-picture-size-default * 2;
+			width: $home-picture-size-large;
+			height: $home-picture-size-large;
+			@include border-radius($home-picture-size-large / 2);
 		}
 	}
 }
 
 #coding {
-	background-color: $section-background-coding;
+	background-color: $red;
 }
 
 #cv {
-	background-color: $section-background-cv;
+	background-color: $blue;
+	$cv-content-color: $almost-white;
 	#cv-wrapper #cv-content {
-		background-color: $section-background-cv-paper;
+		background-color: $cv-content-color;
 		color: $dark-font-color;
 		padding: 30px;
 		@include min-size("medium") {
@@ -375,7 +362,7 @@ section {
 		width: 0;
 		height: 0;
 		border-style: solid;
-		border-color: #ffffff transparent transparent transparent;
+		border-color: $cv-content-color transparent transparent transparent;
 		cursor: pointer;
 		border-width: 18px 24px 0 24px;
 		@include min-size("medium") {
@@ -404,7 +391,7 @@ section {
 }
 
 #contact {
-	background-color: $section-background-contact;
+	background-color: $dark-gray;
 	ul.social {
 		margin: 0;
 		padding: 0;
