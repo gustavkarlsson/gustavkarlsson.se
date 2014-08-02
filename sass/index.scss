@@ -13,7 +13,6 @@ $base-font-size: 100%;
 $base-line-height: 130%;
 $light-font-color: white;
 $dark-font-color: #444444;
-$link-color: #286ec8;
 
 $medium-breakpoint: 430px;
 $large-breakpoint: 900px;
@@ -24,7 +23,7 @@ $huge-breakpoint: 1200px;
    ========================================================================== */
 $header-background-color: rgba(0, 0, 0, 0.75);
 $header-foreground-color: white;
-$header-hor-padding: 7%;
+$header-hor-padding: 5%;
 $header-ver-padding: 24px;
 $header-font-family: "Source Sans Pro", sans-serif;
 $header-font-weight: 700;
@@ -33,10 +32,10 @@ $header-title-font-size-medium: 38px;
 $header-nav-top-margin-default: 10px;
 $header-nav-top-margin-large: 2px;
 $header-nav-hover-color: #48c828;
-$header-nav-link-padding: 5px 12px 5px 12px;
+$header-nav-link-padding: 7px 0 7px 0;
 $header-nav-link-hor-margin: 2px;
 $header-nav-link-font-size-default: 20px;
-$header-nav-link-font-size-medium: 24px;
+$header-nav-link-font-size-medium: 22px;
 $header-nav-link-transition: background-color 0.2s linear;
 
 $section-vertical-padding-small: 35px;
@@ -83,6 +82,39 @@ $home_picture-size-large: $home_picture-size-default * 2;
 	}
 }
 
+@mixin bracket-hover($before: "[", $after: "]") {
+	&::before, &::after {
+		display: inline-block;
+		opacity: 0;
+		-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+		-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+		transition: transform 0.3s, opacity 0.2s;
+	}
+	&::before {
+		margin-right: 10px;
+		content: $before;
+		-webkit-transform: translateX(20px);
+		-moz-transform: translateX(20px);
+		transform: translateX(20px);
+	}
+	&::after {
+		margin-left: 10px;
+		content: $after;
+		-webkit-transform: translateX(-20px);
+		-moz-transform: translateX(-20px);
+		transform: translateX(-20px);
+	}
+	&:hover::before,
+	&:hover::after,
+	&:focus::before,
+	&:focus::after {
+		opacity: 1;
+		-webkit-transform: translateX(0px);
+		-moz-transform: translateX(0px);
+		transform: translateX(0px);
+	}
+}
+
 /* ==========================================================================
    Base styles
    ========================================================================== */
@@ -110,11 +142,7 @@ p, h1, h2, h3, h4, h5 {
 }
 
 a {
-	color: $link-color;
-	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
+	color: inherit;
 }
 
 h1 {
@@ -250,18 +278,15 @@ header {
 			display: block;
 			color: $header-foreground-color * 0.7;
 			padding: $header-nav-link-padding;
+			text-decoration: none;
 			font: {
 				family: $header-font-family;
 				size: $header-nav-link-font-size-default;
 			};
-			&:hover {
-				text-decoration: none;
-				color: $header-foreground-color;
-			}
 			@include min-size("medium") {
 				margin: {
-					left: $header-nav-link-hor-margin;
-					right: $header-nav-link-hor-margin;
+					//left: $header-nav-link-hor-margin;
+					//right: $header-nav-link-hor-margin;
 				};
 				font-size: $header-nav-link-font-size-medium;
 				@include transition($header-nav-link-transition);
@@ -269,6 +294,8 @@ header {
 					color: $header-foreground-color;
 				}
 			}
+
+			@include bracket-hover("[", "]");
 		}
 	}
 }
@@ -331,9 +358,15 @@ section {
 #cv {
 	background-color: $section-background-cv;
 	#cv-wrapper #cv-content {
-		padding: 50px;
 		background-color: $section-background-cv-paper;
 		color: $dark-font-color;
+		padding: 30px;
+		@include min-size("medium") {
+			padding: 50px;
+		}
+		@include min-size("large") {
+			padding: 70px;
+		}
 	}
 	#cv-arrow {
 		display: none;
@@ -342,9 +375,15 @@ section {
 		width: 0;
 		height: 0;
 		border-style: solid;
-		border-width: 30px 40px 0 40px;
 		border-color: #ffffff transparent transparent transparent;
 		cursor: pointer;
+		border-width: 18px 24px 0 24px;
+		@include min-size("medium") {
+			border-width: 24px 32px 0 32px;
+		}
+		@include min-size("large") {
+			border-width: 30px 40px 0 40px;
+		}
 	}
 }
 
