@@ -1,27 +1,26 @@
 @import "base";
 
 /* ==========================================================================
-   Compass settings
+   Pre-defined values
    ========================================================================== */
+
+// Compass settings
 $default-has-layout-approach: block;
 
-/* ==========================================================================
-   Base settings
-   ========================================================================== */
-
-//Colors
+// Colors
 $black-see-through: rgba(0, 0, 0, 0.75);
 $almost-white: #EEE;
+$almost-black: #2e2d2d;
 $red: #b93928;
 $blue: #2b5fbb;
-$dark-gray: #2e2d2d;
-
-$base-font-family: "Open Sans", sans-serif;
-$base-font-size: 100%;
-$base-line-height: 130%;
 $light-font-color: $almost-white;
-$dark-font-color: $dark-gray;
+$dark-font-color: $almost-black;
 
+// Fonts
+$open-sans: "Open Sans", sans-serif;
+$source-sans-pro: "Source Sans Pro", sans-serif;
+
+// Breakpoints
 $medium-breakpoint: 430px;
 $large-breakpoint: 900px;
 $huge-breakpoint: 1200px;
@@ -29,21 +28,6 @@ $huge-breakpoint: 1200px;
 /* ==========================================================================
    General layout settings
    ========================================================================== */
-$header-background-color: $black-see-through;
-$header-foreground-color: $light-font-color;
-$header-hor-padding: 5%;
-$header-ver-padding: 24px;
-$header-font-family: "Source Sans Pro", sans-serif;
-$header-font-weight: 800;
-$header-title-font-size-default: 28px;
-$header-title-font-size-medium: 38px;
-$header-nav-top-margin-default: 10px;
-$header-nav-top-margin-large: 2px;
-$header-nav-link-padding: 7px 0 7px 0;
-$header-nav-link-hor-margin: 2px;
-$header-nav-link-font-size-default: 20px;
-$header-nav-link-font-size-medium: 22px;
-$header-nav-link-transition: color 0.2s linear;
 
 $section-vertical-padding-small: 35px;
 $section-vertical-padding-medium: 100px;
@@ -106,8 +90,9 @@ $social-size-large: 55px;
    Base styles
    ========================================================================== */
 html {
+	$base-font-size: 100%;
 	font: {
-		family: $base-font-family;
+		family: $open-sans;
 		size: $base-font-size;
 	};
 	color: $light-font-color;
@@ -121,7 +106,7 @@ html {
 }
 
 p, h1, h2, h3, h4, h5 {
-	line-height: $base-line-height;
+	line-height: 130%;
 	margin: {
 		top: 0.5em;
 		bottom: 0.5em;
@@ -211,8 +196,11 @@ h1 {
    ========================================================================== */
 
 header {
+	$header-foreground-color: $light-font-color;
+	
 	z-index: 10;
-	background-color: $header-background-color;
+	background-color: $black-see-through;
+	$header-ver-padding: 24px;
 	padding: {
 		top: $header-ver-padding;
 		bottom: $header-ver-padding;
@@ -223,6 +211,7 @@ header {
 	}
 
 	@include min-size("large") {
+		$header-hor-padding: 5%;
 		width: 100% - $header-hor-padding * 2;
 		padding: {
 			left: $header-hor-padding;
@@ -235,13 +224,13 @@ header {
 		color: $header-foreground-color;
 		line-height: inherit;
 		font: {
-			family: $header-font-family;
-			weight: $header-font-weight;
-			size: $header-title-font-size-default;
+			family: $source-sans-pro;
+			weight: bold;
+			size: 28px;
 		};
 		text-align: center;
 		@include min-size("medium") {
-			font-size: $header-title-font-size-medium;
+			font-size: 38px;
 		}
 
 		@include min-size("large") {
@@ -250,10 +239,10 @@ header {
 	}
 	nav {
 		text-align: center;
-		margin-top: $header-nav-top-margin-default;
+		margin-top: 10px;
 		@include min-size("large") {
 			float: right;
-			margin-top: $header-nav-top-margin-large;
+			margin-top: 2px;
 		}
 
 		li {
@@ -264,15 +253,15 @@ header {
 		a {
 			display: block;
 			color: $header-foreground-color * 0.7;
-			padding: $header-nav-link-padding;
+			padding: 7px 0 7px 0;
 			text-decoration: none;
 			font: {
-				family: $header-font-family;
-				size: $header-nav-link-font-size-default;
+				family: $source-sans-pro;
+				size: 20px;
 			};
 			@include min-size("medium") {
-				font-size: $header-nav-link-font-size-medium;
-				@include transition($header-nav-link-transition);
+				font-size: 22px;
+				@include transition(color 0.2s linear);
 				&.active {
 					color: $header-foreground-color;
 				}
@@ -343,9 +332,9 @@ section {
 
 #cv {
 	background-color: $blue;
-	$cv-content-color: $almost-white;
+	$cv-content-background-color: $almost-white;
 	#cv-wrapper #cv-content {
-		background-color: $cv-content-color;
+		background-color: $cv-content-background-color;
 		color: $dark-font-color;
 		padding: 30px;
 		@include min-size("medium") {
@@ -362,7 +351,7 @@ section {
 		width: 0;
 		height: 0;
 		border-style: solid;
-		border-color: $cv-content-color transparent transparent transparent;
+		border-color: $cv-content-background-color transparent transparent transparent;
 		cursor: pointer;
 		border-width: 18px 24px 0 24px;
 		@include min-size("medium") {
@@ -391,7 +380,7 @@ section {
 }
 
 #contact {
-	background-color: $dark-gray;
+	background-color: $almost-black;
 	ul.social {
 		margin: 0;
 		padding: 0;
