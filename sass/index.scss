@@ -228,11 +228,10 @@ html {
 				padding-top: $section-vertical-padding-large + $section-vertical-padding-first-extra;
 			}
 		}
-		
+
 		a {
 			@include transition(0.3s);
 		}
-
 		.section-centering {
 			@extend .center;
 			width: $section-centering-width;
