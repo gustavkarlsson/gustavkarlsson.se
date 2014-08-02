@@ -228,6 +228,10 @@ html {
 				padding-top: $section-vertical-padding-large + $section-vertical-padding-first-extra;
 			}
 		}
+		
+		a {
+			@include transition(0.3s);
+		}
 
 		.section-centering {
 			@extend .center;
@@ -254,7 +258,7 @@ html {
 			a {
 				color: $blue;
 				&:hover {
-					color: lighten($blue, 20%);
+					color: lighten($blue, 30%);
 				}
 			}
 			#photo {
@@ -286,7 +290,7 @@ html {
 			a {
 				color: $yellow;
 				&:hover {
-					color: darken($yellow, 20%);
+					color: darken($yellow, 30%);
 				}
 			}
 		}
