@@ -123,15 +123,15 @@ html {
 		z-index: 10;
 		background-color: $black-see-through;
 		$header-ver-padding: 24px;
+		position: absolute;
+		width: 100%;
 		padding: {
 			top: $header-ver-padding;
 			bottom: $header-ver-padding;
 		};
 		@include breakpoint-medium {
 			position: fixed;
-			width: 100%;
 		}
-
 		@include breakpoint-large {
 			$header-hor-padding: 5%;
 			width: 100% - $header-hor-padding * 2;
@@ -201,20 +201,26 @@ html {
 	}
 	section {
 		$section-vertical-padding-small: 35px;
+		$section-vertical-padding-first-small: 250px;
 		$section-vertical-padding-medium: 100px;
+		$section-vertical-padding-first-medium: 175px;
 		$section-vertical-padding-large: 150px;
+		$section-vertical-padding-first-large: 175px;
 		text-align: center;
 		padding: {
 			top: $section-vertical-padding-small;
 			bottom: $section-vertical-padding-small;
 		};
+		&:first-of-type {
+			padding-top: $section-vertical-padding-first-small;
+		}
 		@include breakpoint-medium {
 			padding: {
 				top: $section-vertical-padding-medium;
 				bottom: $section-vertical-padding-medium;
 			};
 			&:first-of-type {
-				padding-top: $section-vertical-padding-large;
+				padding-top: $section-vertical-padding-first-medium;
 			}
 		}
 
@@ -224,7 +230,7 @@ html {
 				bottom: $section-vertical-padding-large;
 			};
 			&:first-of-type {
-				padding-top: $section-vertical-padding-large;
+				padding-top: $section-vertical-padding-first-large;
 			}
 		}
 
