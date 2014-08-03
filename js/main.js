@@ -162,6 +162,25 @@ function scrollToAnchor(link, event, offsetElement) {
 	event.preventDefault();
 }
 
+function hidePictureWhenScrolled() {
+	var halfPhotoHeight = $("#photo").outerHeight() / 2;
+	var photoTop = $("#photo").offset().top;
+	var scrollTop = $(window).scrollTop();
+	if (header.css("position") === "fixed") {
+		scrollTop += header.outerHeight();
+	}
+	var overScroll = scrollTop - photoTop;
+	
+	var transparency = overScroll / halfPhotoHeight;
+	var opacity = 1 - transparency;
+	if (transparency > 0) {
+		transparency = 0;
+	} else if (transparency < -1) {
+		transparency = -1;
+	}
+	$("#photo").css({ opacity: opacity });
+}
+
 // Binding
 
 $("a[href^=\"#\"]").click(function (event) { // All links which href starts with "#"
@@ -174,10 +193,12 @@ $("#cv-arrow").click(function (event) {
 
 $(window).scroll(function () {
 	setActiveMenuItemPlugin.exec();
+	hidePictureWhenScrolled();
 });
 
 $(window).resize(function () {
 	setActiveMenuItemPlugin.exec();
+	hidePictureWhenScrolled();
 	cvHandler.updateSize();
 });
 

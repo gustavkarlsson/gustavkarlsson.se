@@ -203,7 +203,6 @@ html {
 		$section-vertical-padding-small: 35px;
 		$section-vertical-padding-medium: 100px;
 		$section-vertical-padding-large: 150px;
-		$section-vertical-padding-first-extra: 50px;
 		text-align: center;
 		padding: {
 			top: $section-vertical-padding-small;
@@ -215,7 +214,7 @@ html {
 				bottom: $section-vertical-padding-medium;
 			};
 			&:first-of-type {
-				padding-top: $section-vertical-padding-large + $section-vertical-padding-first-extra;
+				padding-top: $section-vertical-padding-large;
 			}
 		}
 
@@ -225,7 +224,7 @@ html {
 				bottom: $section-vertical-padding-large;
 			};
 			&:first-of-type {
-				padding-top: $section-vertical-padding-large + $section-vertical-padding-first-extra;
+				padding-top: $section-vertical-padding-large;
 			}
 		}
 
@@ -252,44 +251,60 @@ html {
 			}
 		}
 		&#home {
+			padding-bottom: 0;
+			background: {
+				image: url("/img/aurora1.jpg");
+				repeat: no-repeat;
+				position-x: center;
+				position-y: bottom;
+			}
+			@include background-size(cover);
+			color: $light-font-color;
+			text-shadow: 1px 1px 2px black;
+			a {
+				color: lighten($blue, 25%);
+				&:hover {
+					color: lighten($blue, 10%);
+				}
+			}
+			#photo {
+				$home-picture-size-default: 100px;
+				$home-picture-top-margin-default: 25px;
+				$border-width: 5px;
+				margin-bottom: -($home-picture-size-default / 2) - $border-width;
+				margin-top: ($home-picture-size-default / 2);
+				width: $home-picture-size-default;
+				height: $home-picture-size-default;
+				@include border-radius(($home-picture-size-default / 2) + $border-width);
+				border-width: $border-width;
+				border-style: solid;
+				border-color: $almost-white;
+				@include breakpoint-medium {
+					$home-picture-size-medium: $home-picture-size-default * 1.5;
+					margin-top: ($home-picture-size-medium / 2);
+					margin-bottom: -($home-picture-size-medium / 2) - $border-width;
+					width: $home-picture-size-medium;
+					height: $home-picture-size-medium;
+					@include border-radius(($home-picture-size-medium / 2) + $border-width);
+				}
+
+				@include breakpoint-large {
+					$home-picture-size-large: $home-picture-size-default * 2;
+					margin-top: ($home-picture-size-large / 2);
+					margin-bottom: -($home-picture-size-large / 2) - $border-width;
+					width: $home-picture-size-large;
+					height: $home-picture-size-large;
+					@include border-radius(($home-picture-size-large / 2) + $border-width);
+				}
+			}
+		}
+		&#coding {
 			background-color: $almost-white;
 			color: $dark-font-color;
 			a {
 				color: $blue;
 				&:hover {
-					color: lighten($blue, 30%);
-				}
-			}
-			#photo {
-				$home-picture-size-default: 125px;
-				width: $home-picture-size-default;
-				height: $home-picture-size-default;
-				@include border-radius($home-picture-size-default / 2);
-				border-width: 3px;
-				border-style: solid;
-				border-color: #888;
-				@include breakpoint-medium {
-					$home-picture-size-medium: $home-picture-size-default * 1.5;
-					width: $home-picture-size-medium;
-					height: $home-picture-size-medium;
-					@include border-radius($home-picture-size-medium / 2);
-				}
-
-				@include breakpoint-large {
-					$home-picture-size-large: $home-picture-size-default * 2;
-					width: $home-picture-size-large;
-					height: $home-picture-size-large;
-					@include border-radius($home-picture-size-large / 2);
-				}
-			}
-		}
-		&#coding {
-			background-color: $red;
-			color: $light-font-color;
-			a {
-				color: $yellow;
-				&:hover {
-					color: darken($yellow, 30%);
+					color: darken($blue, 30%);
 				}
 			}
 		}
