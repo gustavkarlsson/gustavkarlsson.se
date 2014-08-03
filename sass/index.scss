@@ -308,6 +308,9 @@ html {
 			#languages {
 				@extend .center;
 				img {
+					&:hover {
+						@include scale(1.2);
+					}
 					height: auto;
 					width: 50px;
 					margin: 5px;
