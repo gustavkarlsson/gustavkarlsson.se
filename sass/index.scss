@@ -382,9 +382,21 @@ html {
 				li {
 					display: inline-block;
 					margin: {
-						left: 5px;
-						right: 5px;
+						left: 3px;
+						right: 3px;
 					};
+					@include breakpoint-medium {
+						margin: {
+							left: 5px;
+							right: 5px;
+						};
+					}
+					@include breakpoint-large {
+						margin: {
+							left: 8px;
+							right: 8px;
+						};
+					}
 					a {
 						$social-size-default: 32px;
 						display: block;
