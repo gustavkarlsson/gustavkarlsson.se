@@ -299,6 +299,22 @@ html {
 			}
 		}
 		&#coding {
+			#languages {
+				@extend .center;
+				img {
+					height: auto;
+					width: 50px;
+					margin: 5px;
+					@include breakpoint-medium {
+						width: 70px;
+						margin: 7px;
+					}
+					@include breakpoint-large {
+						width: 100px;
+						margin: 10px;
+					}
+				}
+			}
 			background-color: $almost-white;
 			color: $dark-font-color;
 			a {
