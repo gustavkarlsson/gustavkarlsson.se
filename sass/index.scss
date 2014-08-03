@@ -132,6 +132,7 @@ html {
 		@include breakpoint-medium {
 			position: fixed;
 		}
+
 		@include breakpoint-large {
 			$header-hor-padding: 5%;
 			width: 100% - $header-hor-padding * 2;
@@ -200,12 +201,12 @@ html {
 		}
 	}
 	section {
-		$section-vertical-padding-small: 35px;
+		$section-vertical-padding-small: 100px;
 		$section-vertical-padding-first-small: 250px;
-		$section-vertical-padding-medium: 100px;
-		$section-vertical-padding-first-medium: 175px;
-		$section-vertical-padding-large: 150px;
-		$section-vertical-padding-first-large: 175px;
+		$section-vertical-padding-medium: 150px;
+		$section-vertical-padding-first-medium: 200px;
+		$section-vertical-padding-large: 200px;
+		$section-vertical-padding-first-large: 250px;
 		text-align: center;
 		padding: {
 			top: $section-vertical-padding-small;
@@ -234,6 +235,20 @@ html {
 			}
 		}
 
+		h1 {
+			font: {
+				family: "Source Sans Pro", sans-serif;
+				weight: 200;
+				size: 2.5em;
+			};
+			@include breakpoint-medium {
+				font-size: 3em;
+			}
+
+			@include breakpoint-large {
+				font-size: 3.5em;
+			}
+		}
 		a {
 			@include transition(color 0.3s);
 		}
@@ -241,20 +256,6 @@ html {
 			@extend .center;
 			width: $section-centering-width;
 			max-width: 90%;
-			h1 {
-				font: {
-					family: "Source Sans Pro", sans-serif;
-					weight: 200;
-					size: 2.5em;
-				};
-				@include breakpoint-medium {
-					font-size: 3em;
-				}
-
-				@include breakpoint-large {
-					font-size: 3.5em;
-				}
-			}
 		}
 		&#home {
 			padding-bottom: 0;
@@ -263,10 +264,20 @@ html {
 				repeat: no-repeat;
 				position-x: center;
 				position-y: bottom;
-			}
+			};
 			@include background-size(cover);
 			color: $light-font-color;
 			text-shadow: 1px 1px 2px black;
+			h1 {
+				font-size: 3em;
+				@include breakpoint-medium {
+					font-size: 3.5em;
+				}
+
+				@include breakpoint-large {
+					font-size: 4em;
+				}
+			}
 			a {
 				color: lighten($blue, 25%);
 				&:hover {
@@ -278,29 +289,29 @@ html {
 				$home-picture-top-margin-default: 25px;
 				$border-width: 5px;
 				margin-bottom: -($home-picture-size-default / 2) - $border-width;
-				margin-top: ($home-picture-size-default / 2);
+				margin-top: 50px;
 				width: $home-picture-size-default;
 				height: $home-picture-size-default;
-				@include border-radius(($home-picture-size-default / 2) + $border-width);
+				@include border-radius($home-picture-size-default / 2 + $border-width);
 				border-width: $border-width;
 				border-style: solid;
 				border-color: $almost-white;
 				@include breakpoint-medium {
 					$home-picture-size-medium: $home-picture-size-default * 1.5;
-					margin-top: ($home-picture-size-medium / 2);
+					margin-top: 100px;
 					margin-bottom: -($home-picture-size-medium / 2) - $border-width;
 					width: $home-picture-size-medium;
 					height: $home-picture-size-medium;
-					@include border-radius(($home-picture-size-medium / 2) + $border-width);
+					@include border-radius($home-picture-size-medium / 2 + $border-width);
 				}
 
 				@include breakpoint-large {
 					$home-picture-size-large: $home-picture-size-default * 2;
-					margin-top: ($home-picture-size-large / 2);
+					margin-top: 200px;
 					margin-bottom: -($home-picture-size-large / 2) - $border-width;
 					width: $home-picture-size-large;
 					height: $home-picture-size-large;
-					@include border-radius(($home-picture-size-large / 2) + $border-width);
+					@include border-radius($home-picture-size-large / 2 + $border-width);
 				}
 			}
 		}
@@ -318,6 +329,7 @@ html {
 						width: 70px;
 						margin: 7px;
 					}
+
 					@include breakpoint-large {
 						width: 100px;
 						margin: 10px;
@@ -394,12 +406,14 @@ html {
 							right: 5px;
 						};
 					}
+
 					@include breakpoint-large {
 						margin: {
 							left: 8px;
 							right: 8px;
 						};
 					}
+
 					a {
 						$social-size-default: 32px;
 						display: block;
