@@ -7,7 +7,7 @@ Desktop.ini
 *~
 
 # Generated CSS
-/css/*
+css-gen*
 
 # SASS Cache
-/.sass-cache
+.sass-cache
