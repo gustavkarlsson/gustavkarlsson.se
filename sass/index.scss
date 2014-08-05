@@ -229,6 +229,10 @@ html {
 			}
 		}
 		a {
+			text-decoration: none;
+			&:hover, &:focus {
+				text-decoration: underline;
+			}
 			@include transition(color 0.3s);
 		}
 		.section-centering {
@@ -239,7 +243,7 @@ html {
 		&#home {
 			padding-bottom: 0;
 			background: {
-				image: url(../img/aurora1.jpg);
+				image: url(../img/index-bg.jpg);
 				repeat: no-repeat;
 				position-x: center;
 				position-y: bottom;
@@ -258,10 +262,7 @@ html {
 				}
 			}
 			a {
-				color: lighten($blue, 25%);
-				&:hover, &:focus {
-					color: lighten($blue, 10%);
-				}
+				color: #fdea85;
 			}
 			#photo {
 				$home-picture-size-default: 100px;
@@ -298,9 +299,6 @@ html {
 			#languages {
 				@extend .center;
 				a {
-					&:hover, &:focus {
-						@include scale(1.2);
-					}
 					img {
 						height: auto;
 						width: 50px;
@@ -314,16 +312,16 @@ html {
 							width: 100px;
 							margin: 10px;
 						}
+						&:hover, &:focus {
+							@include scale(1.2);
+						}
 					}
 				}
 			}
 			background-color: $whiteish;
 			color: $dark-font-color;
 			a {
-				color: $blue;
-				&:hover, &:focus {
-					color: darken($blue, 30%);
-				}
+				color: $blue-font-color;
 			}
 		}
 		&#cv {
@@ -338,16 +336,6 @@ html {
 				#cv-content {
 					position: absolute;
 					bottom: 0;
-					background-color: $cv-content-background-color;
-					color: $dark-font-color;
-					padding: 30px;
-					@include breakpoint-medium {
-						padding: 50px;
-					}
-
-					@include breakpoint-large {
-						padding: 70px;
-					}
 				}
 			}
 			#cv-arrow {
