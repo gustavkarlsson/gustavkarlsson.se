@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Open+Sans:300,400,700);
-
 @import "compass";
 @import "compass/reset";
 @import "compass/css3/border-radius";
@@ -8,3 +6,31 @@
 @import "compass/css3/background-size";
 @import "compass/utilities/sprites/sprite-img";
 @import "compass/typography/text/replacement";
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Open+Sans:300,400,700);
+
+/* ==========================================================================
+   Pre-defined values
+   ========================================================================== */
+
+// Compass settings
+// $default-has-layout-approach: block;
+
+// Colors
+$black-see-through: rgba(0, 0, 0, 0.75);
+$whiteish: #fff;
+$light-gray: #dadada;
+$gray: #aaa;
+$blackish: #2d2d2d;
+
+$red: #b93928;
+$blue: #2b5fbb;
+$yellow: #ffe57e;
+$green: #6dd24e;
+
+$light-font-color: $whiteish;
+$dark-font-color: $blackish;
+
+// Fonts
+$open-sans: "Open Sans", sans-serif;
+$source-sans-pro: "Source Sans Pro", sans-serif;

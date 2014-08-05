@@ -1,26 +1,5 @@
 @import "base";
 
-/* ==========================================================================
-   Pre-defined values
-   ========================================================================== */
-
-// Compass settings
-$default-has-layout-approach: block;
-
-// Colors
-$black-see-through: rgba(0, 0, 0, 0.75);
-$almost-white: #f0f0f0;
-$almost-black: #2e2d2d;
-$red: #b93928;
-$blue: #2b5fbb;
-$yellow: #ffe57e;
-$light-font-color: $almost-white;
-$dark-font-color: $almost-black;
-
-// Fonts
-$open-sans: "Open Sans", sans-serif;
-$source-sans-pro: "Source Sans Pro", sans-serif;
-
 // Breakpoints
 $medium-breakpoint: 430px;
 $large-breakpoint: 900px;
@@ -280,7 +259,7 @@ html {
 			}
 			a {
 				color: lighten($blue, 25%);
-				&:hover {
+				&:hover, &:focus {
 					color: lighten($blue, 10%);
 				}
 			}
@@ -295,7 +274,7 @@ html {
 				@include border-radius($home-picture-size-default / 2 + $border-width);
 				border-width: $border-width;
 				border-style: solid;
-				border-color: $almost-white;
+				border-color: $whiteish;
 				@include breakpoint-medium {
 					$home-picture-size-medium: $home-picture-size-default * 1.5;
 					margin-top: 100px;
@@ -318,29 +297,31 @@ html {
 		&#coding {
 			#languages {
 				@extend .center;
-				img {
-					&:hover {
+				a {
+					&:hover, &:focus {
 						@include scale(1.2);
 					}
-					height: auto;
-					width: 50px;
-					margin: 5px;
-					@include breakpoint-medium {
-						width: 70px;
-						margin: 7px;
-					}
+					img {
+						height: auto;
+						width: 50px;
+						margin: 5px;
+						@include breakpoint-medium {
+							width: 70px;
+							margin: 7px;
+						}
 
-					@include breakpoint-large {
-						width: 100px;
-						margin: 10px;
+						@include breakpoint-large {
+							width: 100px;
+							margin: 10px;
+						}
 					}
 				}
 			}
-			background-color: $almost-white;
+			background-color: $whiteish;
 			color: $dark-font-color;
 			a {
 				color: $blue;
-				&:hover {
+				&:hover, &:focus {
 					color: darken($blue, 30%);
 				}
 			}
@@ -348,7 +329,7 @@ html {
 		&#cv {
 			background-color: $blue;
 			color: $light-font-color;
-			$cv-content-background-color: $almost-white;
+			$cv-content-background-color: $whiteish;
 			#cv-wrapper {
 				height: 0;
 				// Expands with click
@@ -388,7 +369,7 @@ html {
 			}
 		}
 		&#contact {
-			background-color: $almost-black;
+			background-color: $blackish;
 			color: $light-font-color;
 			ul.social {
 				margin: 0;
@@ -425,7 +406,7 @@ html {
 						background-size: cover;
 						@include sprite-column(1, $social-size-default);
 						@include hide-text;
-						&:hover {
+						&:hover, &:focus{
 							@include sprite-column(2, $social-size-default);
 						}
 						@include breakpoint-medium {
@@ -433,7 +414,7 @@ html {
 							width: $social-size-medium;
 							height: $social-size-medium;
 							@include sprite-column(1, $social-size-medium);
-							&:hover {
+							&:hover, &:focus{
 								@include sprite-column(2, $social-size-medium);
 							}
 						}
@@ -443,7 +424,7 @@ html {
 							width: $social-size-large;
 							height: $social-size-large;
 							@include sprite-column(1, $social-size-large);
-							&:hover {
+							&:hover, &:focus{
 								@include sprite-column(2, $social-size-large);
 							}
 						}
