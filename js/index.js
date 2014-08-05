@@ -206,4 +206,7 @@ $(document).ready(function () {
 	setActiveMenuItemPlugin.exec(); // Execute once
 });
 
-// Initialization
+// Load fancybox
+$(document).ready(function() {
+	$(".fancybox").fancybox();
+});

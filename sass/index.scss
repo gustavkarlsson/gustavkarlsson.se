@@ -296,6 +296,11 @@ html {
 			}
 		}
 		&#coding {
+			background-color: $whiteish;
+			color: $dark-font-color;
+			a {
+				color: $blue;
+			}
 			#languages {
 				@extend .center;
 				a {
@@ -318,42 +323,12 @@ html {
 					}
 				}
 			}
-			background-color: $whiteish;
-			color: $dark-font-color;
-			a {
-				color: $blue-font-color;
-			}
 		}
 		&#cv {
 			background-color: $blue;
-			color: $light-font-color;
-			$cv-content-background-color: $whiteish;
-			#cv-wrapper {
-				height: 0;
-				// Expands with click
-				overflow: hidden;
-				position: relative;
-				#cv-content {
-					position: absolute;
-					bottom: 0;
-				}
-			}
-			#cv-arrow {
-				margin-left: auto;
-				margin-right: auto;
-				width: 0;
-				height: 0;
-				border-style: solid;
-				border-color: $cv-content-background-color transparent transparent transparent;
-				cursor: pointer;
-				border-width: 18px 24px 0 24px;
-				@include breakpoint-medium {
-					border-width: 24px 32px 0 32px;
-				}
-
-				@include breakpoint-large {
-					border-width: 30px 40px 0 40px;
-				}
+			color: $whiteish;
+			a {
+				color: $yellow;
 			}
 		}
 		&#contact {
@@ -420,22 +395,5 @@ html {
 				}
 			}
 		}
-	}
-}
-
-/* ==========================================================================
-   no-js fallbacks
-   ========================================================================== */
-
-html.no-js section#cv .section-centering {
-	#cv-wrapper {
-		height: inherit;
-		position: inherit;
-		#cv-content {
-			position: inherit;
-		}
-	}
-	#cv-arrow {
-		display: none;
 	}
 }
