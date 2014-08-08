@@ -148,6 +148,21 @@ footer {
 	}
 }
 
+p.context {
+	padding: {
+		top: 12px;
+		bottom: 12px;
+		left: 20px;
+		right: 20px;
+	};
+	background-color: $green;
+	color: $whiteish;
+	text-transform: uppercase;
+	@include breakpoint-medium {
+		float: right;
+	}
+}
+
 #photo {
 	width: 140px;
 	height: auto;
