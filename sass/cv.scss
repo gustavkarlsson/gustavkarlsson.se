@@ -13,9 +13,8 @@ $breakpoint-medium: 800px;
 // This is where the background appears
 $breakpoint-full: $paper-max-width;
 
-
 @mixin breakpoint-medium {
-	@media screen and (min-width: $breakpoint-medium) {
+	@media print, screen and (min-width: $breakpoint-medium) {
 		@content;
 	}
 }
@@ -27,9 +26,12 @@ $breakpoint-full: $paper-max-width;
 }
 
 body {
-	background-color: $blackish;
+	background-color: $whiteish;
 	font-family: $open-sans;
 	overflow-x: hidden;
+	@include breakpoint-full {
+		background-color: $blackish;
+	}
 }
 
 a {
@@ -75,6 +77,7 @@ h1 {
 header, section, footer {
 	clear: both;
 	width: 100%;
+	page-break-inside: avoid;
 }
 
 header {
@@ -104,7 +107,7 @@ header {
 		color: $light-gray;
 	};
 	@include breakpoint-medium {
-		float: left
+		float: left;
 	}
 }
 
@@ -150,7 +153,6 @@ header {
 	}
 }
 
-
 section {
 	float: left;
 	padding: {
@@ -165,7 +167,7 @@ section {
 	h1 {
 		margin: {
 			bottom: 40px;
-		}
+		};
 		font-size: 24px;
 		color: $gray;
 		@include breakpoint-medium {
@@ -186,14 +188,12 @@ section {
 		font-weight: 300;
 		color: $blackish;
 	}
-
 	.section-content {
 		@include breakpoint-medium {
 			width: 70%;
 			float: left;
 		}
 	}
-
 	.context {
 		padding: {
 			top: 12px;
@@ -211,13 +211,18 @@ section {
 }
 
 footer {
-	background-color: $gray;
-	line-height: 30px;
+	@media print {
+		position: fixed;
+		bottom: 0;
+	}
 	text-align: center;
+	background-color: $gray;
 	text-transform: uppercase;
 	color: $whiteish;
-	* {
+	p {
 		line-height: 36px;
+		font-size: 16px;
+		margin: 0;
 	}
 }
 
