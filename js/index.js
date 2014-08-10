@@ -208,5 +208,7 @@ $(document).ready(function () {
 
 // Load fancybox
 $(document).ready(function() {
-	$(".fancybox").fancybox();
+	$(".fancybox").fancybox({
+		width: '960'
+	});
 });
