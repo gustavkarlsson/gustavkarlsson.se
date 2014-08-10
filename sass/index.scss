@@ -329,6 +329,7 @@ html {
 							width: 100px;
 							margin: 10px;
 						}
+
 						&:hover, &:focus {
 							@include scale(1.2);
 						}
@@ -339,7 +340,6 @@ html {
 		&#cv {
 			background-color: $blue;
 			color: $whiteish;
-			
 			.button {
 				width: 150px;
 				&:hover, &:focus {
@@ -386,7 +386,7 @@ html {
 						background-size: cover;
 						@include sprite-column(1, $social-size-default);
 						@include hide-text;
-						&:hover, &:focus{
+						&:hover, &:focus {
 							@include sprite-column(2, $social-size-default);
 						}
 						@include breakpoint-medium {
@@ -394,7 +394,7 @@ html {
 							width: $social-size-medium;
 							height: $social-size-medium;
 							@include sprite-column(1, $social-size-medium);
-							&:hover, &:focus{
+							&:hover, &:focus {
 								@include sprite-column(2, $social-size-medium);
 							}
 						}
@@ -404,7 +404,7 @@ html {
 							width: $social-size-large;
 							height: $social-size-large;
 							@include sprite-column(1, $social-size-large);
-							&:hover, &:focus{
+							&:hover, &:focus {
 								@include sprite-column(2, $social-size-large);
 							}
 						}
