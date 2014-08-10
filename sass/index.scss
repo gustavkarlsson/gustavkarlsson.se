@@ -64,6 +64,24 @@ $section-centering-width: 960px;
 	};
 }
 
+.button {
+	display: inline-block;
+	margin: {
+		left: 10px;
+		right: 10px;
+	};
+	padding: 5px;
+	border: {
+		style: solid;
+		width: 3px;
+		color: $whiteish;
+	};
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+	@include transition(all, 0.3s);
+}
+
 /* ==========================================================================
    Layout
    ========================================================================== */
@@ -261,9 +279,6 @@ html {
 					font-size: 4em;
 				}
 			}
-			a {
-				color: #fdea85;
-			}
 			#photo {
 				$home-picture-size-default: 100px;
 				$home-picture-top-margin-default: 25px;
@@ -298,9 +313,6 @@ html {
 		&#coding {
 			background-color: $whiteish;
 			color: $dark-font-color;
-			a {
-				color: $blue;
-			}
 			#languages {
 				@extend .center;
 				a {
@@ -327,8 +339,13 @@ html {
 		&#cv {
 			background-color: $blue;
 			color: $whiteish;
-			a {
-				color: $yellow;
+			
+			.button {
+				width: 150px;
+				&:hover, &:focus {
+					background-color: $whiteish;
+					color: $blue;
+				}
 			}
 		}
 		&#contact {
