@@ -72,25 +72,6 @@ h1 {
 	border-top: 10px solid $green;
 }
 
-#skills {
-	margin-bottom: 32px;
-	tr {
-		td {
-			padding: 5px;
-			white-space: nowrap;
-			&:first-child {
-				width: 99%;
-			}
-			height: 32px;
-		}
-	}
-	
-	img {
-		width: 32px;
-		height: auto;
-	}
-}
-
 header, section, footer {
 	clear: both;
 	width: 100%;
