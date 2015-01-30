@@ -3,12 +3,13 @@
 $content-max-width: 960px;
 $content-max-margin: 50px;
 $paper-max-width: $content-max-width + $content-max-margin * 2;
-$paper-top-margin: 100px;
+$paper-min-width: 500px;
+$paper-vertical-margin: 100px;
 
 // Breakpoints
 
 // This is where the two column layout starts
-$breakpoint-medium: 800px;
+$breakpoint-medium: 700px;
 
 // This is where the background appears
 $breakpoint-full: $paper-max-width;
@@ -55,17 +56,20 @@ h1 {
 #paper {
 	background-color: $whiteish;
 	width: 100%;
+	min-width: $paper-min-width;
 	margin: {
 		left: auto;
 		right: auto;
 	};
 	@include breakpoint-full {
-		margin-top: $paper-top-margin;
+		margin-top: $paper-vertical-margin;
+		margin-bottom: $paper-vertical-margin;
 		width: $paper-max-width;
 	}
 }
 
 #content {
+	@include clearfix;
 	width: 90%;
 	margin: {
 		left: auto;
@@ -74,7 +78,7 @@ h1 {
 	border-top: 10px solid $green;
 }
 
-header, section, footer {
+header, section {
 	clear: both;
 	width: 100%;
 	page-break-inside: avoid;
@@ -83,18 +87,15 @@ header, section, footer {
 header {
 	width: 100%;
 	float: left;
-	text-align: center;
 	padding: {
 		top: 70px;
 		bottom: 70px;
 	};
-	@include breakpoint-medium {
-		text-align: left;
-	}
 }
 
 #photo {
-	width: 140px;
+	float: left;
+	width: 200px;
 	height: auto;
 	border: {
 		style: solid;
@@ -106,24 +107,27 @@ header {
 		width: 1px;
 		color: $light-gray;
 	};
-	@include breakpoint-medium {
-		float: left;
-	}
 }
 
 #name-profession {
+	padding-top: 25px;
+	clear: both;
 	@include breakpoint-medium {
+		padding-top: 70px;
 		float: left;
+		clear: none;
 		margin-left: 20px;
 	}
 }
 
+#contact {
+	text-align: right;
+	font-size: 13px;
+	line-height: 18px;
+}
+
 #name {
-	margin-top: 65px;
 	font-size: 48px;
-	@include breakpoint-medium {
-		margin-top: 70px;
-	}
 }
 
 #profession {
@@ -141,23 +145,11 @@ header {
 	}
 }
 
-#contact {
-	text-align: left;
-	margin-top: 65px;
-	font-size: 13px;
-	line-height: 18px;
-	@include breakpoint-medium {
-		float: right;
-		margin-top: 0;
-		text-align: right;
-	}
-}
-
 section {
 	float: left;
 	padding: {
-		top: 70px;
-		bottom: 70px;
+		top: 25px;
+		bottom: 25px;
 	};
 	border-top: {
 		style: solid;
@@ -195,12 +187,14 @@ section {
 		}
 	}
 	.context {
+		text-align: right;
 		padding: {
-			top: 12px;
-			bottom: 12px;
-			left: 20px;
-			right: 20px;
+			top: 8px;
+			bottom: 8px;
+			left: 15px;
+			right: 15px;
 		};
+		margin-bottom: 0;
 		background-color: $green;
 		color: $whiteish;
 		text-transform: uppercase;
