@@ -11,3 +11,6 @@ css-gen*
 
 # SASS Cache
 .sass-cache
+
+# Cloud9 IDE
+.c9/
