@@ -29,7 +29,7 @@ Use the Compass compiler to build the project: `compass compile [project-home]`
 - Refactor SASS code
 - Externalize social icon style (put it in index.sass)
 - Design some nicer favicons
-- Create separate build files for production and development1
+- Create separate build files for production and development
 - Test and handle older browsers
 - Don't use fancyBox on small screens
 - Improve SEO
