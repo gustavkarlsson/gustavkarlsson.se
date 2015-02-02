@@ -12,7 +12,6 @@ The project is built using the following tools:
 - [SASS](http://sass-lang.com/)
 - [Compass](http://compass-style.org/)
 - [jQuery](http://jquery.com/)
-- [fancyBox](http://fancyapps.com/fancybox/)
 
 ## How to build
 The project relies on Compass components, so to build it; Compass must be installed.
@@ -31,7 +30,6 @@ Use the Compass compiler to build the project: `compass compile [project-home]`
 - Design some nicer favicons
 - Create separate build files for production and development
 - Test and handle older browsers
-- Don't use fancyBox on small screens
 - Improve SEO
 - Replace mailto with popup textfield containing email
 - Make intro text more readable

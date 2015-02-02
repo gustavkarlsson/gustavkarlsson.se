@@ -5,8 +5,6 @@ var navLinks = $("nav a[href^=\"#\"]"); // All nav links which href starts with 
 var namedAnchors = navLinks.map(function () {
 	return $($(this).attr("href"));
 });
-var cvWrapper = $("#cv-wrapper");
-var cvContent = $("#cv-content");
 
 // Plugins
 
@@ -69,73 +67,6 @@ var setActiveMenuItemPlugin = (function () {
 	}
 })();
 
-var cvHandler = (function () {
-	var fixed = "fixed";
-	var opening = "opening";
-	var closing = "closing";
-
-	var status = fixed;
-
-	function setStatus(newStatus) {
-		status = newStatus;
-	}
-
-	function isOpeningOrOpen() {
-		return (status === opening || (status === fixed && cvWrapper.height() > 0));
-	}
-
-	function animateHeight(element, height) {
-		element.stop().animate({
-			height: height
-		}, function () {
-			setStatus(fixed);
-			setActiveMenuItemPlugin.exec(namedAnchors);
-		});
-	}
-
-	function setHeight(element, height) {
-		element.stop().height(height);
-		setActiveMenuItemPlugin.exec(namedAnchors);
-	}
-
-	function open(animate) {
-		if (animate === true) {
-			animateHeight(cvWrapper, cvContent.outerHeight());
-			setStatus(opening);
-		} else {
-			setHeight(cvWrapper, cvContent.outerHeight());
-			setStatus(fixed);
-		}
-	}
-
-	function close(animate) {
-		if (animate === true) {
-			animateHeight(cvWrapper, 0);
-			setStatus(closing);
-		} else {
-			setHeight(cvWrapper, 0);
-			setStatus(fixed);
-		}
-	}
-
-	return {
-		toggle: function () {
-			if (isOpeningOrOpen()) {
-				close(true);
-			} else {
-				open(true);
-			}
-		},
-		updateSize: function () {
-			if (isOpeningOrOpen()) {
-				open(false);
-			} else {
-				close(false);
-			}
-		}
-	}
-})();
-
 // Functions
 
 function scrollToAnchor(link, event, offsetElement) {
@@ -187,10 +118,6 @@ $("a[href^=\"#\"]").click(function (event) { // All links which href starts with
 	scrollToAnchor($(this), event, header);
 });
 
-$("#cv-arrow").click(function (event) {
-	cvHandler.toggle();
-});
-
 $(window).scroll(function () {
 	setActiveMenuItemPlugin.exec();
 	hidePictureWhenScrolled();
@@ -199,16 +126,8 @@ $(window).scroll(function () {
 $(window).resize(function () {
 	setActiveMenuItemPlugin.exec();
 	hidePictureWhenScrolled();
-	cvHandler.updateSize();
 });
 
 $(document).ready(function () {
 	setActiveMenuItemPlugin.exec(); // Execute once
-});
-
-// Load fancybox
-$(document).ready(function() {
-	$(".fancybox").fancybox({
-		width: '960'
-	});
 });
