@@ -1,4 +1,4 @@
-# Gustavkarlsson.se readme
+# gustavkarlsson.se readme
 
 Generated on 2015-12-02 using
 [generator-yeogurt@1.4.0](https://github.com/larsonjj/generator-yeogurt)
