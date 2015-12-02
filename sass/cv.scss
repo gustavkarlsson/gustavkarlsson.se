@@ -68,9 +68,11 @@ h1 {
 		right: auto;
 	};
 	@include breakpoint-full {
-		margin-top: $paper-vertical-margin;
-		margin-bottom: $paper-vertical-margin;
 		width: $paper-max-width;
+		margin: {
+			top: $paper-vertical-margin;
+			bottom: $paper-vertical-margin;
+		};
 	}
 }
 
@@ -81,28 +83,112 @@ h1 {
 		left: auto;
 		right: auto;
 	};
-	border-top: 10px solid $green;
 }
 
 header, section {
-	clear: both;
+	float: left;
 	width: 100%;
 	page-break-inside: avoid;
 }
 
 header {
-	width: 100%;
-	float: left;
-	padding: {
-		top: 70px;
-		bottom: 70px;
+	margin: {
+		top: 25px;
+		bottom: 50px;
 	};
+	@include breakpoint-small {
+		position: relative;
+		min-height: 280px;
+		margin: {
+			top: 45px;
+			bottom: 45px;
+		};
+	}
+	@include breakpoint-medium {
+		min-height: 210px;
+		margin: {
+			top: 70px;
+			bottom: 70px;
+		};
+	}
+}
+
+section {
+	padding: {
+		top: 35px;
+		bottom: 35px;
+	};
+	border-top: {
+		style: solid;
+		width: 1px;
+		color: $light-gray;
+	};
+	h1 {
+		margin-bottom: 30px;
+		font-size: 24px;
+		color: $gray;
+		@include breakpoint-medium {
+			margin-bottom: 50px;
+			float: left;
+			width: 29%;
+		}
+	}
+	h2 {
+		margin-bottom: 5px;
+		font-size: 18px;
+		font-weight: 700;
+		color: $blackish;
+	}
+	h3 {
+		margin-bottom: 20px;
+		font-size: 16px;
+		font-weight: 300;
+		color: $blackish;
+	}
+	.section-content {
+		@include breakpoint-medium {
+			width: 69%;
+			float: right;
+		}
+	}
+	.context {
+		text-align: right;
+		margin-bottom: 10px;
+		padding: {
+			top: 8px;
+			bottom: 8px;
+			left: 15px;
+			right: 15px;
+		};
+		background-color: $green;
+		color: $whiteish;
+		text-transform: uppercase;
+		@include breakpoint-medium {
+			margin-left: 10px;
+			float: right;
+		}
+	}
+}
+
+#contact {
+	font-size: 13px;
+	line-height: 18px;
+	margin-bottom: 25px;
+	@include breakpoint-small {
+		position: absolute;
+		top: 0;
+		right: 0;
+		text-align: right;
+	}
 }
 
 #photo {
-	float: left;
-	width: 200px;
-	height: auto;
+	height: 200px;
+	width: auto;
+	margin: {
+		left: 1px; // outline
+		bottom: 15px
+	};
 	border: {
 		style: solid;
 		width: 5px;
@@ -113,29 +199,21 @@ header {
 		width: 1px;
 		color: $light-gray;
 	};
-}
-
-#name-profession {
-	padding-top: 25px;
-	clear: both;
-	@include breakpoint-medium {
-		padding-top: 38px;
-		float: left;
-		clear: none;
-		margin-left: 20px;
+	@include breakpoint-small {
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 }
 
-#contact {
-	padding-top: 20px;
-	text-align: left;
-	clear: both;
-	font-size: 13px;
-	line-height: 18px;
+#name-profession {
 	@include breakpoint-small {
-		padding-top: 0;
-		text-align: right;
-		clear: none;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	@include breakpoint-medium {
+		left: 240px;
 	}
 }
 
@@ -147,76 +225,12 @@ header {
 }
 
 #profession {
+	color: $green;
+	margin: 0;
 	font-size: 20px;
-	margin: {
-		top: 10px;
-		bottom: 0;
-		left: 0;
-		right: 0;
-	};
 	font-weight: 300;
 	text-transform: uppercase;
 	@include breakpoint-medium {
 		font-size: 24px;
-		margin-top: 10px;
-	}
-}
-
-section {
-	float: left;
-	padding: {
-		top: 25px;
-		bottom: 25px;
-	};
-	border-top: {
-		style: solid;
-		width: 1px;
-		color: $light-gray;
-	};
-	h1 {
-		margin: {
-			bottom: 40px;
-		};
-		font-size: 24px;
-		color: $gray;
-		@include breakpoint-medium {
-			float: left;
-			width: 30%;
-		}
-	}
-	h2 {
-		font-size: 18px;
-		line-height: 34px;
-		font-weight: 700;
-		color: $blackish;
-	}
-	h3 {
-		margin-bottom: 20px;
-		font-size: 16px;
-		line-height: 30px;
-		font-weight: 300;
-		color: $blackish;
-	}
-	.section-content {
-		@include breakpoint-medium {
-			width: 70%;
-			float: left;
-		}
-	}
-	.context {
-		text-align: right;
-		padding: {
-			top: 8px;
-			bottom: 8px;
-			left: 15px;
-			right: 15px;
-		};
-		margin-bottom: 0;
-		background-color: $green;
-		color: $whiteish;
-		text-transform: uppercase;
-		@include breakpoint-medium {
-			float: right;
-		}
 	}
 }
