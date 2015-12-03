@@ -1,33 +1,227 @@
 // Normalize Styles
 @import '../../node_modules/normalize.css/normalize.css';
 
-// Import Modules
-@import '../_modules/link/link';
-
-// Box sizing partial styles
-// Apply a natural box layout model to all elements
-*,
-*:before,
-*:after
-  -moz-box-sizing border-box
-  -webkit-box-sizing border-box
-  box-sizing border-box
-
-.yeogurt-info
-  text-align center
-  max-width 500px
-  margin-left auto
-  margin-right auto
-
-.version
-  font-size 14px
-  font-family Menlo, Monaco, Consolas, "Courier New", monospace
-  position absolute
-  bottom 10px
-  right 10px
-
-.logo
-  margin-top 15px
+@require 'base'
+// Breakpoints
+$medium-breakpoint = 430px
+$large-breakpoint = 900px
+$huge-breakpoint = 1200px
+$section-centering-width = 960px
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+breakpoint-medium()
+  @media screen and (min-width: $medium-breakpoint)
+    {block}
+breakpoint-large()
+  @media screen and (min-width: $large-breakpoint)
+    {block}
+breakpoint-huge()
+  @media screen and (min-width: $huge-breakpoint)
+    {block}
+hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
+  &::before, &::after
+    display: inline-block
+    opacity: 0
+    transition(transform 0.3s, opacity 0.2s)
+  &::before
+    margin-right: $amount
+    content: $before
+    translateX($amount * 2)
+  &::after
+    margin-left: $amount
+    content: $after
+    translateX(-($amount * 2))
+  &:hover::before,
+	&:hover::after,
+	&:focus::before,
+	&:focus::after
+    opacity: 1
+    translateX(0px)
+/* ==========================================================================
+   Classes
+   ========================================================================== */
+.center
+  margin-left: auto
+  margin-right: auto
+.button
+  display: inline-block
+  margin: 7px
+  padding: 5px
+  border-style: solid
+  border-width: 3px
+  border-color: $whiteish
+  &:hover, &:focus
+    text-decoration: none
+  transition(background-color 0.3s, color 0.3s)
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+html
+  p, h1, h2, h3, h4, h5
+    line-height: 130%
+    margin-top: 0.5em
+    margin-bottom: 0.5em
+  a
+    color: inherit
+  $base-font-size = 100%
+  font-family: $open-sans
+  font-size: $base-font-size
+  breakpoint-medium()
+  breakpoint-large()
+  #browsehappy
+    margin: 0.2em 0
+    background: #ccc
+    color: #000
+    padding: 0.2em 0
+  header
+    $header-foreground-color = $light-font-color
+    z-index: 10
+    background-color: $black-see-through
+    $header-ver-padding = 24px
+    position: absolute
+    width: 100%
+    padding-top: $header-ver-padding
+    padding-bottom: $header-ver-padding
+    breakpoint-medium()
+    breakpoint-large()
+    #header-centering
+      @extend .center
+      clearfix()
+      width: 100%
+      max-width: $huge-breakpoint
+    h1
+      margin: inherit
+      color: $header-foreground-color
+      line-height: inherit
+      font-family: $source-sans-pro
+      font-weight: bold
+      font-size: 28px
+      text-align: center
+      breakpoint-medium()
+      breakpoint-large()
+    nav
+      text-align: center
+      margin-top: 10px
+      breakpoint-large()
+      li
+        breakpoint-medium()
+      a
+        display: block
+        color: ($header-foreground-color * 0.7)
+        padding: 7px 0 7px 0
+        text-decoration: none
+        font-family: $source-sans-pro
+        font-size: 20px
+        breakpoint-medium()
+        hover-expand-brackets("[", "]")
+  section
+    $section-vertical-padding-small = 100px
+    $section-vertical-padding-first-small = 250px
+    $section-vertical-padding-medium = 150px
+    $section-vertical-padding-first-medium = 200px
+    $section-vertical-padding-large = 200px
+    $section-vertical-padding-first-large = 250px
+    text-align: center
+    padding-top: $section-vertical-padding-small
+    padding-bottom: $section-vertical-padding-small
+    &:first-of-type
+      padding-top: $section-vertical-padding-first-small
+    breakpoint-medium()
+    breakpoint-large()
+    h1
+      font-family: "Source Sans Pro", sans-serif
+      font-weight: 200
+      font-size: 2.5em
+      breakpoint-medium()
+      breakpoint-large()
+    a
+      text-decoration: none
+      &:hover, &:focus
+        text-decoration: underline
+      transition(color 0.3s)
+    .section-centering
+      @extend .center
+      width: $section-centering-width
+      max-width: 90%
+    &#home
+      padding-bottom: 0
+      background-image: url(../images/index-bg.jpg)
+      background-repeat: no-repeat
+      background-position-x: center
+      background-position-y: bottom
+      background-size(cover)
+      color: $light-font-color
+      text-shadow: 1px 1px 2px black
+      h1
+        font-size: 3em
+        breakpoint-medium()
+        breakpoint-large()
+      #photo
+        $home-picture-size-default = 100px
+        $home-picture-top-margin-default = 25px
+        $border-width = 7px
+        margin-bottom: (-($home-picture-size-default / 2) - $border-width)
+        margin-top: 50px
+        width: $home-picture-size-default
+        height: $home-picture-size-default
+        border-radius($home-picture-size-default / 2 + $border-width)
+        border-width: $border-width
+        border-style: solid
+        border-color: $whiteish
+        breakpoint-medium()
+        breakpoint-large()
+    &#coding
+      background-color: $whiteish
+      color: $dark-font-color
+      #languages
+        @extend .center
+        a
+          img
+            height: auto
+            width: 50px
+            margin: 5px
+            breakpoint-medium()
+            breakpoint-large()
+            &:hover, &:focus
+              scale(1.2)
+    &#cv
+      background-color: $blue
+      color: $whiteish
+      .button
+        width: 120px
+        &:hover, &:focus
+          background-color: $whiteish
+          color: $blue
+        breakpoint-medium()
+    &#contact
+      background-color: $blackish
+      color: $light-font-color
+      ul.social
+        margin: 0
+        padding: 0
+        text-align: center
+        li
+          display: inline-block
+          margin-left: 3px
+          margin-right: 3px
+          breakpoint-medium()
+          breakpoint-large()
+          a
+            $social-size-default = 32px
+            display: block
+            margin: 0
+            overflow: hidden
+            width: $social-size-default
+            height: $social-size-default
+            background-repeat: no-repeat
+            background-size: cover
+            sprite-column(1, $social-size-default)
+            hide-text()
+            &:hover, &:focus
+              sprite-column(2, $social-size-default)
+            breakpoint-medium()
+            breakpoint-large()
 
 // Styling on warning for users on IE7 or below
 .browsehappy
