@@ -1,12 +1,11 @@
-# gustavkarlsson.se readme
+# gustavkarlsson.se
 
 Generated on 2015-12-02 using
 [generator-yeogurt@1.4.0](https://github.com/larsonjj/generator-yeogurt)
 
 ## Description
 
-This is an example readme file.
-Describe your site/app here.
+This is the source code for my personal website.
 
 ## Technologies used
 
