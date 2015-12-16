@@ -7,7 +7,15 @@
 // @import 'compass/utilities/sprites/sprite-img'
 // @import 'compass/typography/text/replacement'
 
+@require 'nib'
+@require 'nib/reset'
+@require 'nib/border'
+
 @import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Open+Sans:300,400,700')
+
+html {
+  global-reset();
+}
 
 // Colors
 $black-see-through = rgba(0, 0, 0, 0.75)
