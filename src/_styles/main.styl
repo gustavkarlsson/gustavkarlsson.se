@@ -64,8 +64,10 @@ html
   $base-font-size = 100%
   font-family: $open-sans
   font-size: $base-font-size
-  breakpoint-medium()
-  breakpoint-large()
+  +breakpoint-medium()
+    font-size: $base-font-size * 1.2
+  +breakpoint-large()
+    font-size: $base-font-size * 1.4
   #browsehappy
     margin: 0.2em 0
     background: #ccc
@@ -80,8 +82,14 @@ html
     width: 100%
     padding-top: $header-ver-padding
     padding-bottom: $header-ver-padding
-    breakpoint-medium()
-    breakpoint-large()
+    +breakpoint-medium()
+      position: fixed
+    +breakpoint-large()
+      $header-hor-padding = 5%
+      width: 100% - $header-hor-padding * 2
+      padding-left: $header-hor-padding
+      padding-right: $header-hor-padding
+
     #header-centering
       @extend .center
       clearfix()
@@ -95,14 +103,19 @@ html
       font-weight: bold
       font-size: 28px
       text-align: center
-      breakpoint-medium()
-      breakpoint-large()
+      +breakpoint-medium()
+        font-size: 38px
+      +breakpoint-large()
+        float: left
     nav
       text-align: center
       margin-top: 10px
-      breakpoint-large()
+      +breakpoint-large()
+        float: right
+        margin-top: 2px
       li
-        breakpoint-medium()
+        +breakpoint-medium()
+          display: inline-block
       a
         display: block
         color: ($header-foreground-color * 0.7)
@@ -110,7 +123,11 @@ html
         text-decoration: none
         font-family: $source-sans-pro
         font-size: 20px
-        breakpoint-medium()
+        +breakpoint-medium()
+          font-size: 22px
+          transition(color 0.2s linear)
+          &.active
+            color: $header-foreground-color * 1.2
         hover-expand-brackets("[", "]")
   section
     $section-vertical-padding-small = 100px
@@ -124,14 +141,24 @@ html
     padding-bottom: $section-vertical-padding-small
     &:first-of-type
       padding-top: $section-vertical-padding-first-small
-    breakpoint-medium()
-    breakpoint-large()
+    +breakpoint-medium()
+      padding-top: $section-vertical-padding-medium
+      padding-bottom: $section-vertical-padding-medium
+      &:first-of-type
+        padding-top: $section-vertical-padding-first-medium
+    +breakpoint-large()
+      padding-top: $section-vertical-padding-large
+      padding-bottom: $section-vertical-padding-large
+      &:first-of-type
+        padding-top: $section-vertical-padding-first-large
     h1
       font-family: "Source Sans Pro", sans-serif
       font-weight: 200
       font-size: 2.5em
-      breakpoint-medium()
-      breakpoint-large()
+      +breakpoint-medium()
+        font-size: 3em
+      +breakpoint-large()
+        font-size: 3.5em
     a
       text-decoration: none
       &:hover, &:focus
@@ -152,8 +179,10 @@ html
       text-shadow: 1px 1px 2px black
       h1
         font-size: 3em
-        breakpoint-medium()
-        breakpoint-large()
+        +breakpoint-medium()
+          font-size: 3.5em
+        +breakpoint-large()
+          font-size: 4em
       #photo
         $home-picture-size-default = 100px
         $home-picture-top-margin-default = 25px
@@ -166,8 +195,20 @@ html
         border-width: $border-width
         border-style: solid
         border-color: $whiteish
-        breakpoint-medium()
-        breakpoint-large()
+        +breakpoint-medium()
+          $home-picture-size-medium = $home-picture-size-default * 1.5
+          margin-top: 100px
+          margin-bottom: -($home-picture-size-medium / 2) - $border-width
+          width: $home-picture-size-medium
+          height: $home-picture-size-medium
+          border-radius($home-picture-size-medium / 2 + $border-width)
+        +breakpoint-large()
+          $home-picture-size-large = $home-picture-size-default * 2
+          margin-top: 200px
+          margin-bottom: -($home-picture-size-large / 2) - $border-width
+          width: $home-picture-size-large
+          height: $home-picture-size-large
+          border-radius($home-picture-size-large / 2 + $border-width)
     &#coding
       background-color: $whiteish
       color: $dark-font-color
@@ -178,8 +219,12 @@ html
             height: auto
             width: 50px
             margin: 5px
-            breakpoint-medium()
-            breakpoint-large()
+            +breakpoint-medium()
+              width: 70px
+              margin: 7px
+            +breakpoint-large()
+              width: 100px
+              margin: 10px
             &:hover, &:focus
               scale(1.2)
     &#cv
@@ -190,7 +235,8 @@ html
         &:hover, &:focus
           background-color: $whiteish
           color: $blue
-        breakpoint-medium()
+        +breakpoint-medium()
+          width: 150px
     &#contact
       background-color: $blackish
       color: $light-font-color
@@ -202,8 +248,12 @@ html
           display: inline-block
           margin-left: 3px
           margin-right: 3px
-          breakpoint-medium()
-          breakpoint-large()
+          +breakpoint-medium()
+            margin-left: 5px
+            margin-right: 5px
+          +breakpoint-large()
+            margin-left: 8px
+            margin-right: 8px
           a
             $social-size-default = 32px
             display: block
@@ -217,8 +267,20 @@ html
             hide-text()
             &:hover, &:focus
               sprite-column(2, $social-size-default)
-            breakpoint-medium()
-            breakpoint-large()
+            +breakpoint-medium()
+              $social-size-medium = 40px
+              width: $social-size-medium
+              height: $social-size-medium
+              sprite-column(1, $social-size-medium)
+              &:hover, &:focus
+                sprite-column(2, $social-size-medium)
+            +breakpoint-large()
+              $social-size-large = 55px
+              width: $social-size-large
+              height: $social-size-large
+              sprite-column(1, $social-size-large)
+              &:hover, &:focus
+                sprite-column(2, $social-size-large)
 
 // Styling on warning for users on IE7 or below
 .browsehappy
