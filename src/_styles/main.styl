@@ -20,21 +20,21 @@ hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
   &::before, &::after
     display: inline-block
     opacity: 0
-    transition(transform 0.3s, opacity 0.2s)
+    transition: transform 0.3s, opacity 0.2s
   &::before
     margin-right: $amount
     content: $before
-    translateX($amount * 2)
+    transform: translateX($amount * 2)
   &::after
     margin-left: $amount
     content: $after
-    translateX(-($amount * 2))
+    transform: translateX(-($amount * 2))
   &:hover::before,
 	&:hover::after,
 	&:focus::before,
 	&:focus::after
     opacity: 1
-    translateX(0px)
+    transform: translateX(0px)
 /* ==========================================================================
    Classes
    ========================================================================== */
@@ -50,7 +50,7 @@ hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
   border-color: $whiteish
   &:hover, &:focus
     text-decoration: none
-  transition(background-color 0.3s, color 0.3s)
+  transition: background-color 0.3s, color 0.3s
 /* ==========================================================================
    Layout
    ========================================================================== */
@@ -125,7 +125,7 @@ html
         font-size: 20px
         +breakpoint-medium()
           font-size: 22px
-          transition(color 0.2s linear)
+          transition: color 0.2s linear
           &.active
             color: $header-foreground-color * 1.2
         hover-expand-brackets("[", "]")
@@ -163,7 +163,7 @@ html
       text-decoration: none
       &:hover, &:focus
         text-decoration: underline
-      transition(color 0.3s)
+      transition: color 0.3s
     .section-centering
       @extend .center
       width: $section-centering-width
@@ -226,7 +226,7 @@ html
               width: 100px
               margin: 10px
             &:hover, &:focus
-              scale(1.2)
+              transform: scale(1.2)
     &#cv
       background-color: $blue
       color: $whiteish
