@@ -1,21 +1,7 @@
 @require 'base'
-// Breakpoints
-$medium-breakpoint = 430px
-$large-breakpoint = 900px
-$huge-breakpoint = 1200px
-$section-centering-width = 960px
-/* ==========================================================================
-   Mixins
-   ========================================================================== */
-breakpoint-medium()
-  @media screen and (min-width: $medium-breakpoint)
-    {block}
-breakpoint-large()
-  @media screen and (min-width: $large-breakpoint)
-    {block}
-breakpoint-huge()
-  @media screen and (min-width: $huge-breakpoint)
-    {block}
+
+// Mixins
+
 hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
   &::before, &::after
     display: inline-block
@@ -35,12 +21,14 @@ hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
 	&:focus::after
     opacity: 1
     transform: translateX(0px)
-/* ==========================================================================
-   Classes
-   ========================================================================== */
+
+
+// Classes
+
 .center
   margin-left: auto
   margin-right: auto
+
 .button
   display: inline-block
   margin: 7px
@@ -51,9 +39,10 @@ hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
   &:hover, &:focus
     text-decoration: none
   transition: background-color 0.3s, color 0.3s
-/* ==========================================================================
-   Layout
-   ========================================================================== */
+
+
+// Layout
+
 html
   p, h1, h2, h3, h4, h5
     line-height: 130%
@@ -68,11 +57,6 @@ html
     font-size: $base-font-size * 1.2
   +breakpoint-large()
     font-size: $base-font-size * 1.4
-  #browsehappy
-    margin: 0.2em 0
-    background: #ccc
-    color: #000
-    padding: 0.2em 0
   header
     $header-foreground-color = $light-font-color
     z-index: 10
@@ -282,8 +266,8 @@ html
               &:hover, &:focus
                 sprite-column(2, $social-size-large)
 
-// Styling on warning for users on IE7 or below
-.browsehappy
+// Styling on warning for users on old IE version
+#browsehappy
   text-align center
   margin 0
   background #fff8e2

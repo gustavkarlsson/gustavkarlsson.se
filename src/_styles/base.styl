@@ -1,12 +1,3 @@
-// @import 'compass'
-// @import 'compass/reset'
-// @import 'compass/css3/border-radius'
-// @import 'compass/css3/transition'
-// @import 'compass/css3/transform'
-// @import 'compass/css3/background-size'
-// @import 'compass/utilities/sprites/sprite-img'
-// @import 'compass/typography/text/replacement'
-
 @require 'nib'
 @require 'nib/reset'
 @require 'nib/border'
@@ -14,10 +5,6 @@
 @require 'nib/vendor'
 
 @import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Open+Sans:300,400,700')
-
-html {
-  global-reset();
-}
 
 // Colors
 $black-see-through = rgba(0, 0, 0, 0.75)
@@ -32,6 +19,25 @@ $green = #6dd24e
 $light-font-color = $whiteish
 $dark-font-color = $blackish
 $blue-font-color = #1c98eb
+
 // Fonts
 $open-sans = "Open Sans", sans-serif
 $source-sans-pro = "Source Sans Pro", sans-serif
+
+// Breakpoints
+$medium-breakpoint = 430px
+$large-breakpoint = 900px
+$huge-breakpoint = 1200px
+$section-centering-width = 960px
+
+breakpoint-medium()
+  @media screen and (min-width: $medium-breakpoint)
+    {block}
+breakpoint-large()
+  @media screen and (min-width: $large-breakpoint)
+    {block}
+breakpoint-huge()
+  @media screen and (min-width: $huge-breakpoint)
+    {block}
+
+global-reset()
