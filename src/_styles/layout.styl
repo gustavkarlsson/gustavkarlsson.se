@@ -1,0 +1,38 @@
+@require 'base'
+
+header
+  z-index: 10
+  $header-ver-padding = 24px
+  position: absolute
+  width: 100%
+  padding-top: $header-ver-padding
+  padding-bottom: $header-ver-padding
+  +breakpoint-medium()
+    position: fixed
+  +breakpoint-large()
+    $header-hor-padding = 5%
+    width: 100% - $header-hor-padding * 2
+    padding-left: $header-hor-padding
+    padding-right: $header-hor-padding
+  #header-centering
+    @extend .center
+    clearfix()
+    width: 100%
+    max-width: $huge-breakpoint
+  h1
+    margin: inherit
+    text-align: center
+    +breakpoint-large()
+      float: left
+  nav
+    margin-top: 10px
+    text-align: center
+    +breakpoint-large()
+      margin-top: 2px
+      float: right
+    li
+      +breakpoint-medium()
+        display: inline-block
+      a
+        display: block
+        padding: 7px 0 7px 0

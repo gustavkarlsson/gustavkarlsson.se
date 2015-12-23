@@ -6,6 +6,9 @@
 
 @import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Open+Sans:300,400,700')
 
+// Reset styling
+global-reset()
+
 // Colors
 $black-see-through = rgba(0, 0, 0, 0.75)
 $whiteish = white
@@ -40,4 +43,7 @@ breakpoint-huge()
   @media screen and (min-width: $huge-breakpoint)
     {block}
 
-global-reset()
+// Classes
+.center
+  margin-left: auto
+  margin-right: auto
