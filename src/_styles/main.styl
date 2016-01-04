@@ -1,5 +1,6 @@
 @require 'base'
 @require 'layout'
+@require 'typography'
 
 // Mixins
 hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
@@ -24,19 +25,6 @@ hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
     transform: translateX(0)
 
 
-// Layout
-body
-  $base-font-size = 100%
-  font-family: $open-sans
-  font-size: $base-font-size
-  +breakpoint-medium()
-    font-size: $base-font-size * 1.2
-  +breakpoint-large()
-    font-size: $base-font-size * 1.4
-p, h1, h2, h3, h4, h5
-  line-height: 130%
-  margin-top: 0.5em
-  margin-bottom: 0.5em
 a
   color: inherit
 header
@@ -44,37 +32,16 @@ header
   background-color: $black-see-through
   h1
     color: $header-foreground-color
-    line-height: inherit
-    font-family: $source-sans-pro
-    font-weight: bold
-    font-size: 28px
-    +breakpoint-medium()
-      font-size: 38px
   nav
     a
       color: ($header-foreground-color * 0.7)
-      text-decoration: none
-      font-family: $source-sans-pro
-      font-size: 20px
       +breakpoint-medium()
-        font-size: 22px
         transition: color 0.2s linear
         &.active
           color: $header-foreground-color * 1.2
       hover-expand-brackets("[", "]")
 section
-  h1
-    font-family: "Source Sans Pro", sans-serif
-    font-weight: 200
-    font-size: 2.5em
-    +breakpoint-medium()
-      font-size: 3em
-    +breakpoint-large()
-      font-size: 3.5em
   a
-    text-decoration: none
-    &:hover, &:focus
-      text-decoration: underline
     transition: color 0.3s
   &#home
     padding-bottom: 0
