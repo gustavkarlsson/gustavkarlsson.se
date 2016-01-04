@@ -1,29 +1,7 @@
 @require 'base'
 @require 'layout'
 @require 'typography'
-
-// Mixins
-hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
-  $translate-amount = $amount * 2
-  &::before, &::after
-    display: inline-block
-    opacity: 0
-    transition: transform 0.3s, opacity 0.2s
-  &::before
-    margin-right: $amount
-    content: $before
-    transform: translateX($translate-amount)
-  &::after
-    margin-left: $amount
-    content: $after
-    transform: translateX(-($translate-amount))
-  &:hover::before,
-	&:hover::after,
-	&:focus::before,
-	&:focus::after
-    opacity: 1
-    transform: translateX(0)
-
+@require 'fx'
 
 a
   color: inherit
@@ -36,13 +14,9 @@ header
     a
       color: ($header-foreground-color * 0.7)
       +breakpoint-medium()
-        transition: color 0.2s linear
         &.active
           color: $header-foreground-color * 1.2
-      hover-expand-brackets("[", "]")
 section
-  a
-    transition: color 0.3s
   &#home
     padding-bottom: 0
     background-image: url(../images/index-bg.jpg)
