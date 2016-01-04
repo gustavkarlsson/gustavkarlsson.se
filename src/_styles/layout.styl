@@ -36,3 +36,30 @@ header
       a
         display: block
         padding: 7px 0 7px 0
+
+section
+  $section-vertical-padding-small = 100px
+  $section-vertical-padding-first-small = 250px
+  $section-vertical-padding-medium = 150px
+  $section-vertical-padding-first-medium = 200px
+  $section-vertical-padding-large = 200px
+  $section-vertical-padding-first-large = 250px
+  text-align: center
+  padding-top: $section-vertical-padding-small
+  padding-bottom: $section-vertical-padding-small
+  &:first-of-type
+    padding-top: $section-vertical-padding-first-small
+  +breakpoint-medium()
+    padding-top: $section-vertical-padding-medium
+    padding-bottom: $section-vertical-padding-medium
+    &:first-of-type
+      padding-top: $section-vertical-padding-first-medium
+  +breakpoint-large()
+    padding-top: $section-vertical-padding-large
+    padding-bottom: $section-vertical-padding-large
+    &:first-of-type
+      padding-top: $section-vertical-padding-first-large
+  .section-centering
+    @extend .center
+    width: $section-centering-width
+    max-width: 90%

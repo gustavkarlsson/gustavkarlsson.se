@@ -3,6 +3,7 @@
 
 // Mixins
 hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
+  $translate-amount = $amount * 2
   &::before, &::after
     display: inline-block
     opacity: 0
@@ -10,29 +11,17 @@ hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
   &::before
     margin-right: $amount
     content: $before
-    transform: translateX($amount * 2)
+    transform: translateX($translate-amount)
   &::after
     margin-left: $amount
     content: $after
-    transform: translateX(-($amount * 2))
+    transform: translateX(-($translate-amount))
   &:hover::before,
 	&:hover::after,
 	&:focus::before,
 	&:focus::after
     opacity: 1
-    transform: translateX(0px)
-
-// Classes
-.button
-  display: inline-block
-  margin: 7px
-  padding: 5px
-  border-style: solid
-  border-width: 3px
-  border-color: $whiteish
-  &:hover, &:focus
-    text-decoration: none
-  transition: background-color 0.3s, color 0.3s
+    transform: translateX(0)
 
 
 // Layout
@@ -74,27 +63,6 @@ header
           color: $header-foreground-color * 1.2
       hover-expand-brackets("[", "]")
 section
-  $section-vertical-padding-small = 100px
-  $section-vertical-padding-first-small = 250px
-  $section-vertical-padding-medium = 150px
-  $section-vertical-padding-first-medium = 200px
-  $section-vertical-padding-large = 200px
-  $section-vertical-padding-first-large = 250px
-  text-align: center
-  padding-top: $section-vertical-padding-small
-  padding-bottom: $section-vertical-padding-small
-  &:first-of-type
-    padding-top: $section-vertical-padding-first-small
-  +breakpoint-medium()
-    padding-top: $section-vertical-padding-medium
-    padding-bottom: $section-vertical-padding-medium
-    &:first-of-type
-      padding-top: $section-vertical-padding-first-medium
-  +breakpoint-large()
-    padding-top: $section-vertical-padding-large
-    padding-bottom: $section-vertical-padding-large
-    &:first-of-type
-      padding-top: $section-vertical-padding-first-large
   h1
     font-family: "Source Sans Pro", sans-serif
     font-weight: 200
@@ -108,10 +76,6 @@ section
     &:hover, &:focus
       text-decoration: underline
     transition: color 0.3s
-  .section-centering
-    @extend .center
-    width: $section-centering-width
-    max-width: 90%
   &#home
     padding-bottom: 0
     background-image: url(../images/index-bg.jpg)
