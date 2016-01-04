@@ -1,5 +1,6 @@
 @require 'base'
 
+// Mixins
 hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
   $translate-amount = $amount * 2
   &::before, &::after
@@ -21,6 +22,11 @@ hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
     opacity: 1
     transform: translateX(0)
 
+// Classes
+.button
+  transition: background-color 0.3s, color 0.3s
+
+// General
 header
   nav
     a
@@ -30,6 +36,3 @@ header
 section
   a
     transition: color 0.3s
-
-.button
-  transition: background-color 0.3s, color 0.3s

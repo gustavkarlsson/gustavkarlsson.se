@@ -1,0 +1,34 @@
+@require 'base'
+
+// Color variables
+$black-see-through = rgba(0, 0, 0, 0.75)
+$whiteish = white
+$light-gray = #dadada
+$gray = #aaaaaa
+$blackish = #2d2d2d
+$red = #b93928
+$blue = #2b5fbb
+$yellow = #ffe57e
+$green = #6dd24e
+$light-font-color = $whiteish
+$dark-font-color = $blackish
+$blue-font-color = #1c98eb
+
+// Classes
+.button
+  border-color: $whiteish
+
+// General
+a
+  color: inherit
+header
+  $header-foreground-color = $light-font-color
+  background-color: $black-see-through
+  h1
+    color: $header-foreground-color
+  nav
+    a
+      color: ($header-foreground-color * 0.7)
+      +breakpoint-medium()
+        &.active
+          color: $header-foreground-color * 1.2
