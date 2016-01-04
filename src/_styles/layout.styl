@@ -63,6 +63,44 @@ section
     @extend .center
     width: $section-centering-width
     max-width: 90%
+#home
+  padding-bottom: 0
+  background-image: url(../images/index-bg.jpg)
+  background-repeat: no-repeat
+  background-position-x: center
+  background-position-y: bottom
+  background-size(cover)
+  #photo
+    $home-picture-size-default = 100px
+    $home-picture-top-margin-default = 25px
+    $border-width = 7px
+    margin-bottom: (-($home-picture-size-default / 2) - $border-width)
+    margin-top: 50px
+    width: $home-picture-size-default
+    height: $home-picture-size-default
+    border-radius($home-picture-size-default / 2 + $border-width)
+    border-width: $border-width
+    border-style: solid
+    +breakpoint-medium()
+      $home-picture-size-medium = $home-picture-size-default * 1.5
+      margin-top: 100px
+      margin-bottom: -($home-picture-size-medium / 2) - $border-width
+      width: $home-picture-size-medium
+      height: $home-picture-size-medium
+      border-radius($home-picture-size-medium / 2 + $border-width)
+    +breakpoint-large()
+      $home-picture-size-large = $home-picture-size-default * 2
+      margin-top: 200px
+      margin-bottom: -($home-picture-size-large / 2) - $border-width
+      width: $home-picture-size-large
+      height: $home-picture-size-large
+      border-radius($home-picture-size-large / 2 + $border-width)
+#coding
+  #languages
+    @extend .center
+    a
+      img
+        height: auto
 #contact
   ul.social
     li

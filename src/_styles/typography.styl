@@ -46,6 +46,31 @@ section
     text-decoration: none
     &:hover, &:focus
       text-decoration: underline
+#home
+  text-shadow: 1px 1px 2px black
+  h1
+    font-size: 3em
+    +breakpoint-medium()
+      font-size: 3.5em
+    +breakpoint-large()
+      font-size: 4em
+#coding
+  #languages
+    a
+      img
+        width: 50px
+        margin: 5px
+        +breakpoint-medium()
+          width: 70px
+          margin: 7px
+        +breakpoint-large()
+          width: 100px
+          margin: 10px
+#cv
+  .button
+    width: 120px
+    +breakpoint-medium()
+      width: 150px
 #contact
   ul.social
     li

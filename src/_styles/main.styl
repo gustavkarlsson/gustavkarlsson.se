@@ -6,80 +6,9 @@
 
 // Styling on warning for users on old IE version
 #browsehappy
-  text-align center
-  margin 0
-  background #fff8e2
-  color #000
-  padding 0.5em 0
-
-// General
-section
-  &#home
-    padding-bottom: 0
-    background-image: url(../images/index-bg.jpg)
-    background-repeat: no-repeat
-    background-position-x: center
-    background-position-y: bottom
-    background-size(cover)
-    color: $light-font-color
-    text-shadow: 1px 1px 2px black
-    h1
-      font-size: 3em
-      +breakpoint-medium()
-        font-size: 3.5em
-      +breakpoint-large()
-        font-size: 4em
-    #photo
-      $home-picture-size-default = 100px
-      $home-picture-top-margin-default = 25px
-      $border-width = 7px
-      margin-bottom: (-($home-picture-size-default / 2) - $border-width)
-      margin-top: 50px
-      width: $home-picture-size-default
-      height: $home-picture-size-default
-      border-radius($home-picture-size-default / 2 + $border-width)
-      border-width: $border-width
-      border-style: solid
-      border-color: $whiteish
-      +breakpoint-medium()
-        $home-picture-size-medium = $home-picture-size-default * 1.5
-        margin-top: 100px
-        margin-bottom: -($home-picture-size-medium / 2) - $border-width
-        width: $home-picture-size-medium
-        height: $home-picture-size-medium
-        border-radius($home-picture-size-medium / 2 + $border-width)
-      +breakpoint-large()
-        $home-picture-size-large = $home-picture-size-default * 2
-        margin-top: 200px
-        margin-bottom: -($home-picture-size-large / 2) - $border-width
-        width: $home-picture-size-large
-        height: $home-picture-size-large
-        border-radius($home-picture-size-large / 2 + $border-width)
-  &#coding
-    background-color: $whiteish
-    color: $dark-font-color
-    #languages
-      @extend .center
-      a
-        img
-          height: auto
-          width: 50px
-          margin: 5px
-          +breakpoint-medium()
-            width: 70px
-            margin: 7px
-          +breakpoint-large()
-            width: 100px
-            margin: 10px
-          &:hover, &:focus
-            transform: scale(1.2)
-  &#cv
-    background-color: $blue
-    color: $whiteish
-    .button
-      width: 120px
-      &:hover, &:focus
-        background-color: $whiteish
-        color: $blue
-      +breakpoint-medium()
-        width: 150px
+  font-size: initial
+  text-align: center
+  margin: 0
+  background: #fff8e2
+  color: #000
+  padding: 0.5em 0
