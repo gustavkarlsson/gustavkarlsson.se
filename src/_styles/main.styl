@@ -36,14 +36,7 @@ hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
 
 
 // Layout
-
-html
-  p, h1, h2, h3, h4, h5
-    line-height: 130%
-    margin-top: 0.5em
-    margin-bottom: 0.5em
-  a
-    color: inherit
+body
   $base-font-size = 100%
   font-family: $open-sans
   font-size: $base-font-size
@@ -51,181 +44,187 @@ html
     font-size: $base-font-size * 1.2
   +breakpoint-large()
     font-size: $base-font-size * 1.4
-  header
-    $header-foreground-color = $light-font-color
-    background-color: $black-see-through
-    h1
-      color: $header-foreground-color
-      line-height: inherit
-      font-family: $source-sans-pro
-      font-weight: bold
-      font-size: 28px
-      +breakpoint-medium()
-        font-size: 38px
-    nav
-      a
-        color: ($header-foreground-color * 0.7)
-        text-decoration: none
-        font-family: $source-sans-pro
-        font-size: 20px
-        +breakpoint-medium()
-          font-size: 22px
-          transition: color 0.2s linear
-          &.active
-            color: $header-foreground-color * 1.2
-        hover-expand-brackets("[", "]")
-  section
-    $section-vertical-padding-small = 100px
-    $section-vertical-padding-first-small = 250px
-    $section-vertical-padding-medium = 150px
-    $section-vertical-padding-first-medium = 200px
-    $section-vertical-padding-large = 200px
-    $section-vertical-padding-first-large = 250px
-    text-align: center
-    padding-top: $section-vertical-padding-small
-    padding-bottom: $section-vertical-padding-small
-    &:first-of-type
-      padding-top: $section-vertical-padding-first-small
+p, h1, h2, h3, h4, h5
+  line-height: 130%
+  margin-top: 0.5em
+  margin-bottom: 0.5em
+a
+  color: inherit
+header
+  $header-foreground-color = $light-font-color
+  background-color: $black-see-through
+  h1
+    color: $header-foreground-color
+    line-height: inherit
+    font-family: $source-sans-pro
+    font-weight: bold
+    font-size: 28px
     +breakpoint-medium()
-      padding-top: $section-vertical-padding-medium
-      padding-bottom: $section-vertical-padding-medium
-      &:first-of-type
-        padding-top: $section-vertical-padding-first-medium
-    +breakpoint-large()
-      padding-top: $section-vertical-padding-large
-      padding-bottom: $section-vertical-padding-large
-      &:first-of-type
-        padding-top: $section-vertical-padding-first-large
-    h1
-      font-family: "Source Sans Pro", sans-serif
-      font-weight: 200
-      font-size: 2.5em
-      +breakpoint-medium()
-        font-size: 3em
-      +breakpoint-large()
-        font-size: 3.5em
+      font-size: 38px
+  nav
     a
+      color: ($header-foreground-color * 0.7)
       text-decoration: none
-      &:hover, &:focus
-        text-decoration: underline
-      transition: color 0.3s
-    .section-centering
+      font-family: $source-sans-pro
+      font-size: 20px
+      +breakpoint-medium()
+        font-size: 22px
+        transition: color 0.2s linear
+        &.active
+          color: $header-foreground-color * 1.2
+      hover-expand-brackets("[", "]")
+section
+  $section-vertical-padding-small = 100px
+  $section-vertical-padding-first-small = 250px
+  $section-vertical-padding-medium = 150px
+  $section-vertical-padding-first-medium = 200px
+  $section-vertical-padding-large = 200px
+  $section-vertical-padding-first-large = 250px
+  text-align: center
+  padding-top: $section-vertical-padding-small
+  padding-bottom: $section-vertical-padding-small
+  &:first-of-type
+    padding-top: $section-vertical-padding-first-small
+  +breakpoint-medium()
+    padding-top: $section-vertical-padding-medium
+    padding-bottom: $section-vertical-padding-medium
+    &:first-of-type
+      padding-top: $section-vertical-padding-first-medium
+  +breakpoint-large()
+    padding-top: $section-vertical-padding-large
+    padding-bottom: $section-vertical-padding-large
+    &:first-of-type
+      padding-top: $section-vertical-padding-first-large
+  h1
+    font-family: "Source Sans Pro", sans-serif
+    font-weight: 200
+    font-size: 2.5em
+    +breakpoint-medium()
+      font-size: 3em
+    +breakpoint-large()
+      font-size: 3.5em
+  a
+    text-decoration: none
+    &:hover, &:focus
+      text-decoration: underline
+    transition: color 0.3s
+  .section-centering
+    @extend .center
+    width: $section-centering-width
+    max-width: 90%
+  &#home
+    padding-bottom: 0
+    background-image: url(../images/index-bg.jpg)
+    background-repeat: no-repeat
+    background-position-x: center
+    background-position-y: bottom
+    background-size(cover)
+    color: $light-font-color
+    text-shadow: 1px 1px 2px black
+    h1
+      font-size: 3em
+      +breakpoint-medium()
+        font-size: 3.5em
+      +breakpoint-large()
+        font-size: 4em
+    #photo
+      $home-picture-size-default = 100px
+      $home-picture-top-margin-default = 25px
+      $border-width = 7px
+      margin-bottom: (-($home-picture-size-default / 2) - $border-width)
+      margin-top: 50px
+      width: $home-picture-size-default
+      height: $home-picture-size-default
+      border-radius($home-picture-size-default / 2 + $border-width)
+      border-width: $border-width
+      border-style: solid
+      border-color: $whiteish
+      +breakpoint-medium()
+        $home-picture-size-medium = $home-picture-size-default * 1.5
+        margin-top: 100px
+        margin-bottom: -($home-picture-size-medium / 2) - $border-width
+        width: $home-picture-size-medium
+        height: $home-picture-size-medium
+        border-radius($home-picture-size-medium / 2 + $border-width)
+      +breakpoint-large()
+        $home-picture-size-large = $home-picture-size-default * 2
+        margin-top: 200px
+        margin-bottom: -($home-picture-size-large / 2) - $border-width
+        width: $home-picture-size-large
+        height: $home-picture-size-large
+        border-radius($home-picture-size-large / 2 + $border-width)
+  &#coding
+    background-color: $whiteish
+    color: $dark-font-color
+    #languages
       @extend .center
-      width: $section-centering-width
-      max-width: 90%
-    &#home
-      padding-bottom: 0
-      background-image: url(../images/index-bg.jpg)
-      background-repeat: no-repeat
-      background-position-x: center
-      background-position-y: bottom
-      background-size(cover)
-      color: $light-font-color
-      text-shadow: 1px 1px 2px black
-      h1
-        font-size: 3em
-        +breakpoint-medium()
-          font-size: 3.5em
-        +breakpoint-large()
-          font-size: 4em
-      #photo
-        $home-picture-size-default = 100px
-        $home-picture-top-margin-default = 25px
-        $border-width = 7px
-        margin-bottom: (-($home-picture-size-default / 2) - $border-width)
-        margin-top: 50px
-        width: $home-picture-size-default
-        height: $home-picture-size-default
-        border-radius($home-picture-size-default / 2 + $border-width)
-        border-width: $border-width
-        border-style: solid
-        border-color: $whiteish
-        +breakpoint-medium()
-          $home-picture-size-medium = $home-picture-size-default * 1.5
-          margin-top: 100px
-          margin-bottom: -($home-picture-size-medium / 2) - $border-width
-          width: $home-picture-size-medium
-          height: $home-picture-size-medium
-          border-radius($home-picture-size-medium / 2 + $border-width)
-        +breakpoint-large()
-          $home-picture-size-large = $home-picture-size-default * 2
-          margin-top: 200px
-          margin-bottom: -($home-picture-size-large / 2) - $border-width
-          width: $home-picture-size-large
-          height: $home-picture-size-large
-          border-radius($home-picture-size-large / 2 + $border-width)
-    &#coding
-      background-color: $whiteish
-      color: $dark-font-color
-      #languages
-        @extend .center
-        a
-          img
-            height: auto
-            width: 50px
-            margin: 5px
-            +breakpoint-medium()
-              width: 70px
-              margin: 7px
-            +breakpoint-large()
-              width: 100px
-              margin: 10px
-            &:hover, &:focus
-              transform: scale(1.2)
-    &#cv
-      background-color: $blue
-      color: $whiteish
-      .button
-        width: 120px
-        &:hover, &:focus
-          background-color: $whiteish
-          color: $blue
-        +breakpoint-medium()
-          width: 150px
-    &#contact
-      background-color: $blackish
-      color: $light-font-color
-      ul.social
-        margin: 0
-        padding: 0
-        text-align: center
-        li
-          display: inline-block
-          margin-left: 3px
-          margin-right: 3px
+      a
+        img
+          height: auto
+          width: 50px
+          margin: 5px
           +breakpoint-medium()
-            margin-left: 5px
-            margin-right: 5px
+            width: 70px
+            margin: 7px
           +breakpoint-large()
-            margin-left: 8px
-            margin-right: 8px
-          a
-            $social-size-default = 32px
-            display: block
-            margin: 0
-            overflow: hidden
-            width: $social-size-default
-            height: $social-size-default
-            background-repeat: no-repeat
-            background-size: cover
-            sprite-column(1, $social-size-default)
-            hide-text()
+            width: 100px
+            margin: 10px
+          &:hover, &:focus
+            transform: scale(1.2)
+  &#cv
+    background-color: $blue
+    color: $whiteish
+    .button
+      width: 120px
+      &:hover, &:focus
+        background-color: $whiteish
+        color: $blue
+      +breakpoint-medium()
+        width: 150px
+  &#contact
+    background-color: $blackish
+    color: $light-font-color
+    ul.social
+      margin: 0
+      padding: 0
+      text-align: center
+      li
+        display: inline-block
+        margin-left: 3px
+        margin-right: 3px
+        +breakpoint-medium()
+          margin-left: 5px
+          margin-right: 5px
+        +breakpoint-large()
+          margin-left: 8px
+          margin-right: 8px
+        a
+          $social-size-default = 32px
+          display: block
+          margin: 0
+          overflow: hidden
+          width: $social-size-default
+          height: $social-size-default
+          background-repeat: no-repeat
+          background-size: cover
+          sprite-column(1, $social-size-default)
+          hide-text()
+          &:hover, &:focus
+            sprite-column(2, $social-size-default)
+          +breakpoint-medium()
+            $social-size-medium = 40px
+            width: $social-size-medium
+            height: $social-size-medium
+            sprite-column(1, $social-size-medium)
             &:hover, &:focus
-              sprite-column(2, $social-size-default)
-            +breakpoint-medium()
-              $social-size-medium = 40px
-              width: $social-size-medium
-              height: $social-size-medium
-              sprite-column(1, $social-size-medium)
-              &:hover, &:focus
-                sprite-column(2, $social-size-medium)
-            +breakpoint-large()
-              $social-size-large = 55px
-              width: $social-size-large
-              height: $social-size-large
-              sprite-column(1, $social-size-large)
-              &:hover, &:focus
-                sprite-column(2, $social-size-large)
+              sprite-column(2, $social-size-medium)
+          +breakpoint-large()
+            $social-size-large = 55px
+            width: $social-size-large
+            height: $social-size-large
+            sprite-column(1, $social-size-large)
+            &:hover, &:focus
+              sprite-column(2, $social-size-large)
 
 // Styling on warning for users on old IE version
 #browsehappy
