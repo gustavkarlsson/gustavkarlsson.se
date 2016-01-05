@@ -1,6 +1,7 @@
 extends _layouts/base
 
 include _modules/social/social
+include _modules/language/language
 
 block content
   header
@@ -20,42 +21,64 @@ block content
   section#home
     .section-centering
       h1 Hi, I'm Gustav!
-      p
-        | I'm a programmer and web designer based in Umeå, Sweden. Scroll down to learn more.
+      p I'm a programmer and web designer based in Umeå, Sweden. Scroll down to learn more.
       img#photo(src="#{baseImagesUrl}/photo.jpg", alt="Photo")
       
   section#coding
     .section-centering
       h1 Coding
-      p
-        | I like putting 1's and 0's together to create amazing things, and I do so using a multitude of languages and techniques. Here are some of my favorites:
+      p I like putting 1's and 0's together to create amazing things, and I do so using a multitude of languages and techniques. Here are some of my favorites:
       table#languages
         tr
           td
-            a(href="https://www.java.com/", target="_blank", title="Java")
-              img(src="#{baseImagesUrl}/languages/java.png", alt="Java")
+            +language({
+              href: "https://www.java.com/",
+              title: "Java",
+              imgSrc: baseImagesUrl + "/languages/java.png"
+              })()
           td
-            a(href="http://ceylon-lang.org/", target="_blank", title="Ceylon")
-              img(src="#{baseImagesUrl}/languages/ceylon.png", alt="Ceylon")
+            +language({
+              href: "http://ceylon-lang.org/",
+              title: "Ceylon",
+              imgSrc: baseImagesUrl + "/languages/ceylon.png"
+              })()
           td
-            a(href="http://en.wikipedia.org/wiki/C_Sharp_(programming_language)", target="_blank", title="C#")
-              img(src="#{baseImagesUrl}/languages/c-sharp.png", alt="C#")
+            +language({
+              href: "http://en.wikipedia.org/wiki/C_Sharp_(programming_language)",
+              title: "C#",
+              imgSrc: baseImagesUrl + "/languages/c-sharp.png"
+              })()
           td
-            a(href="https://www.dartlang.org/", target="_blank", title="Dart")
-              img(src="#{baseImagesUrl}/languages/dart.png", alt="Dart")
+            +language({
+              href: "https://www.dartlang.org/",
+              title: "Dart",
+              imgSrc: baseImagesUrl + "/languages/dart.png"
+              })()
         tr
           td
-            a(href="http://en.wikipedia.org/wiki/HTML5", target="_blank", title="HTML5")
-              img(src="#{baseImagesUrl}/languages/html5.png", alt="HTML5")
+            +language({
+              href: "http://en.wikipedia.org/wiki/HTML5",
+              title: "HTML5",
+              imgSrc: baseImagesUrl + "/languages/html5.png"
+              })()
           td
-            a(href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets", target="_blank", title="CSS3")
-              img(src="#{baseImagesUrl}/languages/css3.png", alt="CSS3")
+            +language({
+              href: "http://en.wikipedia.org/wiki/Cascading_Style_Sheets",
+              title: "CSS3",
+              imgSrc: baseImagesUrl + "/languages/css3.png"
+              })()
           td
-            a(href="http://en.wikipedia.org/wiki/JavaScript", target="_blank", title="JavaScript")
-              img(src="#{baseImagesUrl}/languages/javascript.png", alt="JavaScript")
+            +language({
+              href: "http://en.wikipedia.org/wiki/JavaScript",
+              title: "JavaScript",
+              imgSrc: baseImagesUrl + "/languages/javascript.png"
+              })()
           td
-            a(href="https://angularjs.org/", target="_blank", title="AngularJS")
-              img(src="#{baseImagesUrl}/languages/angularjs.png", alt="AngularJS")
+            +language({
+              href: "https://angularjs.org/",
+              title: "AngularJS",
+              imgSrc: baseImagesUrl + "/languages/angularjs.png"
+              })()
               
   section#cv
     .section-centering
@@ -68,8 +91,7 @@ block content
   section#contact
     .section-centering
       h1 Contact me
-      p
-        | If you want to know more, you can find me on any of the following services.
+      p If you want to know more, you can find me on any of the following services.
       table#social
         tr
           td

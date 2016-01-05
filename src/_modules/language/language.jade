@@ -1,0 +1,9 @@
+mixin language(spec)
+  - spec = spec || {}
+  - spec.__class = spec.__class || ""
+  - spec.href = spec.href || ""
+  - spec.title = spec.title || ""
+  - spec.imgSrc = spec.imgSrc || ""
+
+  a(class=spec.__class, target="_blank", href=spec.href, title=spec.title)&attributes(attributes)
+    img(src=spec.imgSrc, alt=spec.title)
