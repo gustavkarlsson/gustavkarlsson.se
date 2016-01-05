@@ -3,6 +3,9 @@ extends _layouts/base
 include _modules/social/social
 include _modules/language/language
 
+block stylesheets
+  link(rel='stylesheet', href= baseUrl + 'styles/main-home.css')
+
 block content
   header
     #header-centering
@@ -143,3 +146,6 @@ block content
               title: "Phone: +46 73 04 77 399",
               icon: "phone"
               })()
+
+block scripts
+  script(src= baseUrl + 'scripts/main.js')
