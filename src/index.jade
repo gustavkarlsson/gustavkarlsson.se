@@ -1,5 +1,7 @@
 extends _layouts/base
 
+include _modules/social/social
+
 block content
   header
     #header-centering
@@ -71,27 +73,51 @@ block content
       table#social
         tr
           td
-            a(href="mailto:gustav.karlsson@gmail.com", target="_blank", title="Email")
-              i.fa.fa-envelope
+            +social({
+              href: "mailto:gustav.karlsson@gmail.com",
+              title: "Email",
+              icon: "envelope"
+              })()
           td
-            a(href="https://www.linkedin.com/profile/view?id=194331605", target="_blank", title="LinkedIn")
-              i.fa.fa-linkedin
+            +social({
+              href: "https://www.linkedin.com/profile/view?id=194331605",
+              title: "LinkedIn",
+              icon: "linkedin"
+              })()
           td
-            a(href="https://github.com/gustavkarlsson", target="_blank", title="GitHub")
-              i.fa.fa-github
+            +social({
+              href: "https://github.com/gustavkarlsson",
+              title: "GitHub",
+              icon: "github"
+              })()
           td
-            a(href="https://www.facebook.com/gustavkarlsson86", target="_blank", title="Facebook")
-              i.fa.fa-facebook-official
+            +social({
+              href: "https://www.facebook.com/gustavkarlsson86",
+              title: "Facebook",
+              icon: "facebook-official"
+              })()
         tr
           td
-            a(href="https://twitter.com/gkarlsson86", target="_blank", title="Twitter")
-              i.fa.fa-twitter
+            +social({
+              href: "https://twitter.com/gkarlsson86",
+              title: "Twitter",
+              icon: "twitter"
+              })()
           td
-            a(href="skype:mrmadman86?userinfo", target="_blank", title="Skype: mrmadman86")
-              i.fa.fa-skype
+            +social({
+              href: "skype:mrmadman86?userinfo",
+              title: "Skype: mrmadman86",
+              icon: "skype"
+              })()
           td
-            a(href="http://www.lastfm.se/user/MrMadMan86", target="_blank", title="Last.fm")
-              i.fa.fa-lastfm
+            +social({
+              href: "http://www.lastfm.se/user/MrMadMan86",
+              title: "Last.fm",
+              icon: "lastfm"
+              })()
           td
-            a(href="tel:+46730477399", target="_blank", title="Phone: +46 73 04 77 399")
-              i.fa.fa-phone
+            +social({
+              href: "tel:+46730477399",
+              title: "Phone: +46 73 04 77 399",
+              icon: "phone"
+              })()
