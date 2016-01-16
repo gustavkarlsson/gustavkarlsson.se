@@ -25,7 +25,7 @@ breakpoint-large()
 breakpoint-huge()
   @media screen and (min-width: $huge-breakpoint)
     {block}
-    
+
 // Fonts
 $open-sans = "Open Sans", sans-serif
 $source-sans-pro = "Source Sans Pro", sans-serif
@@ -57,3 +57,12 @@ $blue-font-color = #1c98eb
   border-width: 3px
   &:hover, &:focus
     text-decoration: none
+
+// Styling on warning for users on old IE version
+#browsehappy
+  font-size: initial
+  text-align: center
+  margin: 0
+  background: #fff8e2
+  color: #000
+  padding: 0.5em 0
