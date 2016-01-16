@@ -1,2 +1,38 @@
 @require '../base'
 @require 'breakpoints'
+
+body
+  font-family: $open-sans
+a
+  text-decoration: none
+  &:hover, &:focus
+    text-decoration: underline
+p
+  font-size: 13px
+  line-height: 21px
+h1
+  font-weight: 300
+section
+  h1
+    font-size: 24px
+  h2
+    font-size: 18px
+    font-weight: 700
+  h3
+    font-size: 16px
+    font-weight: 300
+  .context
+    text-transform: uppercase
+#contact
+  font-size: 13px
+  line-height: 18px
+#name
+  font-size: 36px
+  +medium-breakpoint()
+    font-size: 48px
+#profession
+  font-size: 20px
+  font-weight: 300
+  text-transform: uppercase
+  +medium-breakpoint()
+    font-size: 24px
