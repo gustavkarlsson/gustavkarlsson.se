@@ -64,7 +64,8 @@ module.exports = function(gulp, plugins, args, config, taskTarget, browserSync) 
       conservativeCollapse: true,
       removeCommentsFromCDATA: true,
       removeEmptyAttributes: true,
-      removeRedundantAttributes: true
+      removeRedundantAttributes: true,
+      collapseWhitespace: true
     }))
     .pipe(gulp.dest(dest))
     .on('end', browserSync.reload);
