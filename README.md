@@ -6,6 +6,7 @@ This is how you build the project:
 
 ### Required software
 - [Node](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
 - [Gulp](http://gulpjs.com/)
 
 ### Dependencies
