@@ -5,10 +5,6 @@
 
 var $ = require('jquery');
 
-$(function() {
-  console.log('Welcome to Yeogurt!');
-});
-
 // Static members
 
 var header = $("header");
