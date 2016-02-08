@@ -1,0 +1,43 @@
+@require 'nib'
+@require 'nib/reset'
+@require 'nib/border'
+@require 'nib/clearfix'
+@require 'nib/vendor'
+
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Open+Sans:300,400,700')
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+
+// Reset styling
+global-reset()
+
+// Fonts
+$open-sans = "Open Sans", sans-serif
+$source-sans-pro = "Source Sans Pro", sans-serif
+
+// Color variables
+$black-see-through = rgba(0, 0, 0, 0.75)
+$whiteish = white
+$light-gray = #dadada
+$gray = #aaaaaa
+$blackish = #2d2d2d
+$red = #b93928
+$blue = #2b5fbb
+$yellow = #ffe57e
+$green = #6dd24e
+$light-font-color = $whiteish
+$dark-font-color = $blackish
+$blue-font-color = #1c98eb
+
+// Classes
+.center
+  margin-left: auto
+  margin-right: auto
+
+// Styling on warning for users on old IE version
+#browsehappy
+  font-size: initial
+  text-align: center
+  margin: 0
+  background: #fff8e2
+  color: #000
+  padding: 0.5em 0

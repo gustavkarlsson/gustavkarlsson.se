@@ -1,16 +1,6 @@
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Linux
-*~
-
-# Generated CSS
-css-gen*
-
-# SASS Cache
-.sass-cache
-
-# Cloud9 IDE
-.c9/
+node_modules
+*.log
+build
+tmp
+.grunt
+.DS_Store

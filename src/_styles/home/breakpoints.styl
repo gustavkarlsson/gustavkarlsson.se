@@ -1,0 +1,16 @@
+@require '../base'
+
+// Breakpoints
+$medium-breakpoint = 430px
+$large-breakpoint = 900px
+$huge-breakpoint = 1200px
+
+breakpoint-medium()
+  @media screen and (min-width: $medium-breakpoint)
+    {block}
+breakpoint-large()
+  @media screen and (min-width: $large-breakpoint)
+    {block}
+breakpoint-huge()
+  @media screen and (min-width: $huge-breakpoint)
+    {block}

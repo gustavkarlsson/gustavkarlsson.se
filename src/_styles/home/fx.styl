@@ -1,0 +1,51 @@
+@require '../base'
+@require 'breakpoints'
+
+// Mixins
+hover-expand-brackets($before = "[", $after = "]", $amount = 10px)
+  $translate-amount = $amount * 2
+  &::before, &::after
+    display: inline-block
+    opacity: 0
+    transition: transform 0.3s, opacity 0.2s
+  &::before
+    margin-right: $amount
+    content: $before
+    transform: translateX($translate-amount)
+  &::after
+    margin-left: $amount
+    content: $after
+    transform: translateX(-($translate-amount))
+  &:hover::before,
+	&:hover::after,
+	&:focus::before,
+	&:focus::after
+    opacity: 1
+    transform: translateX(0)
+
+// Classes
+.button
+  transition: background-color 0.3s, color 0.3s
+
+// General
+header
+  nav
+    a
+      +breakpoint-medium()
+        transition: color 0.2s linear
+      hover-expand-brackets("[", "]")
+section
+  a
+    transition: color 0.3s
+#coding
+  #languages
+    a
+      img
+        &:hover, &:focus
+          transform: scale(1.2)
+#contact
+  #social
+    a
+      i
+        &:hover, &:focus
+          transform: scale(1.2)

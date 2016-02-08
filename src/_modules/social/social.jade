@@ -1,0 +1,9 @@
+mixin social(spec)
+  - spec = spec || {}
+  - spec.__class = spec.__class || ""
+  - spec.href = spec.href || ""
+  - spec.title = spec.title || ""
+  - spec.icon = spec.icon || ""
+
+  a(class=spec.__class, target="_blank", href=spec.href, title=spec.title)&attributes(attributes)
+    i(class="fa", class="fa-"+spec.icon)

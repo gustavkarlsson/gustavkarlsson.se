@@ -1,0 +1,19 @@
+@require '../base'
+
+$content-max-width = 960px
+$content-max-margin = 50px
+$paper-max-width = $content-max-width + ($content-max-margin * 2)
+
+$medium-breakpoint = 750px
+$small-breakpoint = 500px
+$full-breakpoint = $paper-max-width
+
+small-breakpoint()
+  @media print, screen and (min-width: $small-breakpoint)
+    {block}
+medium-breakpoint()
+  @media print, screen and (min-width: $medium-breakpoint)
+    {block}
+full-breakpoint()
+  @media screen and (min-width: $full-breakpoint) // Not for printing
+    {block}

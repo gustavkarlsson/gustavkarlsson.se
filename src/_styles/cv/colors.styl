@@ -1,0 +1,31 @@
+@require '../base'
+@require 'breakpoints'
+
+body
+  background-color: $whiteish
+  +full-breakpoint()
+    background-color: $blackish
+a
+  color: inherit
+
+#paper
+  background-color: $whiteish
+
+section
+  border-top-color: $light-gray
+  h1
+    color: $gray
+  h2
+    color: $blackish
+  h3
+    color: $blackish
+  .context
+    background-color: $green
+    color: $whiteish
+
+#photo
+  border-color: white
+  outline-color: $light-gray
+
+#profession
+  color: $green

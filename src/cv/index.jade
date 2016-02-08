@@ -1,0 +1,96 @@
+extends ../_layouts/base
+
+block title
+  title= "CV - " + baseTitle
+
+block stylesheets
+  link(rel='stylesheet', href= baseUrl + 'styles/main-cv.css')
+
+block content
+  #paper
+    #content
+      header
+        ul#contact
+          li
+            a(href='mailto:gustav.karlsson@gmail.com', target='_blank') gustav.karlsson@gmail.com
+          li
+            a(href='http://gustavkarlsson.se', target='_blank') http://gustavkarlsson.se
+          li
+            a(href='tel:+46730477399') (+46) 73 04 77 399
+          li
+            a(href='https://www.google.se/maps/place/Hagmarksvägen+23,+903+45+Umeå', target='_blank')
+              | Hagmarksvägen 23
+              br
+              | 903 45 Umeå
+              br
+              | SWEDEN
+        img#photo(alt='Photo of Gustav Karlsson', src= baseImagesUrl + 'photo.jpg')
+        #name-profession
+          h1#name Gustav Karlsson
+          p#profession Developer and web designer
+      section
+        h1 Work Experience
+        .section-content
+          p.context Oct 2015 - Present
+          h2 Software Developer
+          h3
+            a(href='http://www.udk.se', target='_blank') Umeå Datakonsulter AB
+            |  (Umeå)
+          p
+            | Consulting and developing around an enterprise product information management system.
+            | Still mostly learning, but working primarily with Java and Javascript together with
+            | IBM Content Manager and IBM Websphere.
+          p.context 2011 - Oct 2015
+          h2 Software Developer
+          h3
+            a(href='http://www.tieto.se', target='_blank') Tieto Sweden AB
+            |  (Umeå)
+          p
+            | Developed a full stack web application in a small team.
+            | Notable technologies used included Git, Maven, JPA, JAX-RS, JAXB, MySQL,
+            | Apache Wicket and OSGi.
+            | Common day-to-day tasks aside from programming could be discussing
+            | requirements with customer, designing web pages, and supporting users.
+          p.context 2007 - 2010 (Extra)
+          h2 Web Designer and Technical Consultant
+          h3
+            a(href='http://kontorsringen.se', target='_blank') Kontorsringen i Sverige AB
+            |  (Umeå)
+          p
+            | Designed and administered the company website.
+            | Also handled various technical tasks like setting up the office network and
+            | managing backup solutions and email clients.
+      section
+        h1 Education
+        .section-content
+          p.context 2006 - 2015
+          h2 Bachelor's degree in computer science
+          h3 Umeå University (Umeå)
+          p
+            | Studied computer science until 2011 when I took a study break to work.
+            | Finished the studies with a thesis project in 2015.
+          p.context 2002 - 2005
+          h2 Upper Secondary School
+          h3 Tannbergsskolan, Lycksele
+          p
+            | Technical Programme with focus on Informatics.
+      section
+        h1 Notable Skills
+        .section-content
+          h2 Languages
+          p Java 8, Javascript, C#, Ceylon, Python, PHP, Dart, XML, HTML5, CSS3, SASS, LESS, Stylus
+          h2 Frameworks and libraries
+          p JAX-RS, Jersey, JAX-WS, JAXB, CXF, JUnit, Mockito, Jetty, Guice, Gson, Jackson, JSoup, SLF4J, Log4j, Logback, JPA, Hibernate, EclipseLink, Lucene, Android SDK, Dropwizard, OSGi, Spring-DM, Apache Wicket, jQuery, AngularJS
+          h2 Databases
+          p MySQL, Apache Derby, SQLite, H2, Realm
+          h2 Tools
+          p Eclipse, IntelliJ IDEA, Git, Subversion, Maven, Gradle, Jenkins, Jira, Hansoft, ELK stack
+          h2 Software engineering
+          p Agile, Scrum, Test Driven Development, Design patterns, Clean code
+      section
+        h1 Qualifications
+        .section-content
+          p.context 2013
+          h2 Certificates
+          p Oracle Certified Associate, Java SE 7 Programmer
+          p Drivers license

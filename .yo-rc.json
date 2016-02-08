@@ -1,0 +1,12 @@
+{
+  "generator-yeogurt": {
+    "config": {
+      "projectName": "gustavkarlsson.se",
+      "htmlOption": "jade",
+      "jsPreprocessor": "none",
+      "cssOption": "stylus",
+      "testFramework": "jasmine"
+    },
+    "version": "1.4.0"
+  }
+}
