@@ -1,27 +1,55 @@
 # gustavkarlsson.se
+The source code for my personal website.
 
-Generated on 2015-12-02 using
-[generator-yeogurt@1.4.0](https://github.com/larsonjj/generator-yeogurt)
+## Building
+This is how you build the project:
 
-## Description
+### Required software
+- [Node](https://nodejs.org/)
+- [Gulp](http://gulpjs.com/)
 
-This is the source code for my personal website.
+### Dependencies
+Install dependencies by running `npm install`
+
+### Tasks
+This project uses Gulp to run automated tasks for development and production builds.
+The tasks are as follows:
+
+`gulp --production`: Build the production ready version of the project
+
+`gulp serve`: Compiles preprocessors and boots up development server  
+`gulp serve --open`: Same as `gulp serve` but will also open up site/app in your default browser  
+`gulp serve --production`: Same as `gulp serve` but will run all production tasks so you can view the site/app in it's final optimized form
+
+`gulp test`: Lints all `*.js` file in the `source` folder using eslint and runs all `*.test.js` file unit tests through Karma and Jasmine  
+`gulp test --watch`: Same as `gulp test` but will constantly watch `*.test.js` files and rerun tests when changes are detected
+
+***Adding the `--debug` option to any gulp task displays extra debugging information (ex. data being loaded into your templates)***
 
 ## Technologies used
 
+Code Management
+- [Git](https://git-scm.com/)
+- [Editorconfig](http://editorconfig.org/)
+
+Scaffolding
+- [Yeoman](http://yeoman.io/)
+
+Build automation
+- [Gulp](http://gulpjs.com)
+
 JavaScript
 - [Browserify](http://browserify.org/)
-- [Node](https://nodejs.org/)
 
-Testing
-- [Karma](http://karma-runner.github.io/0.13/index.html)
-- [Jasmine](http://jasmine.github.io/)
-
-Styles
-- [Stylus](https://learnboost.github.io/stylus/)
+Linting
+- [ESlint](http://eslint.org/)
 
 Markup
 - [Jade](http://jade-lang.com/)
+
+Styles
+- [Stylus](https://learnboost.github.io/stylus/)
+- [nib](https://tj.github.io/nib/)
 
 Optimization
 - [Imagemin](https://github.com/imagemin/imagemin)
@@ -30,29 +58,8 @@ Optimization
 Server
 - [BrowserSync](http://www.browsersync.io/)
 
-Linting
-- [ESlint](http://eslint.org/)
-
-Automation
-- [Gulp](http://gulpjs.com)
-
-Code Management
-- [Editorconfig](http://editorconfig.org/)
-- [Git](https://git-scm.com/)
-
-
-## Automated tasks
-
-This project uses [Gulp](http://gulpjs.com) to run automated tasks for development and production builds.
-The tasks are as follows:
-
-`gulp --production`: Same as `gulp serve --production` also run `gulp test` and  not boot up production server
-
-`gulp serve`: Compiles preprocessors and boots up development server
-`gulp serve --open`: Same as `gulp serve` but will also open up site/app in your default browser
-`gulp serve --production`: Same as `gulp serve` but will run all production tasks so you can view the site/app in it's final optimized form
-
-`gulp test`: Lints all `*.js` file in the `source` folder using eslint and runs all `*.test.js` file unit tests through [Karma](http://karma-runner.github.io/0.13/index.html) and Jasmine
-`gulp test --watch`: Same as `gulp test` but will constantly watch `*.test.js` files and rerun tests when changes are detected
-
-***Adding the `--debug` option to any gulp task displays extra debugging information (ex. data being loaded into your templates)***
+<!---
+Testing
+- [Karma](http://karma-runner.github.io/0.13/index.html)
+- [Jasmine](http://jasmine.github.io/)
+-->
