@@ -48,7 +48,7 @@
     "karma-jasmine": "0.3.7",
     "jasmine-core": "2.3.4",
     "nib": "1.0.4",
-    "font-awesome": "4.5.0"
+    "fa-stylus": "0.0.6"
   },
   "scripts": {
     "clean-deps": "rimraf node_modules"

@@ -6,7 +6,7 @@ module.exports = function(gulp, plugins, args, config, taskTarget, browserSync) 
   var dirs = config.directories;
 
   gulp.task('fonts', function(){
-    gulp.src(['./node_modules/font-awesome/fonts/*.*'])
+    gulp.src(['./node_modules/fa-stylus/fonts/**/*.*'])
     .pipe(gulp.dest(dirs.destination + '/fonts'));
   });
 };

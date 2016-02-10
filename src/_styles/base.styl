@@ -5,10 +5,14 @@
 @require 'nib/vendor'
 
 @import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Open+Sans:300,400,700')
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
 
 // Reset styling
 global-reset()
+
+// Font awesome
+$fa-font-path = '../fonts'
+@require 'fa-stylus'
+import-all-icons()
 
 // Fonts
 $open-sans = "Open Sans", sans-serif

@@ -4,6 +4,7 @@ var path = require('path');
 var autoprefixer = require('autoprefixer');
 var gulpif = require('gulp-if');
 var nib = require('nib');
+var fontAwesome = require('fa-stylus');
 
 module.exports = function(gulp, plugins, args, config, taskTarget, browserSync) {
   var dirs = config.directories;
@@ -16,7 +17,10 @@ module.exports = function(gulp, plugins, args, config, taskTarget, browserSync) 
       .pipe(plugins.plumber())
       .pipe(plugins.sourcemaps.init())
       .pipe(plugins.stylus({
-        use: nib(),
+        use: [
+          nib(),
+          fontAwesome()
+        ],
         compress: true,
         'include css': true
       }))
