@@ -1,16 +1,6 @@
-FROM ubuntu:14.04.3
+FROM node:0.12.10
 
 MAINTAINER Gustav Karlsson
-
-# Install software using apt-get
-#   software-properties-common is used for add-apt-repository
-#   python-software-properties is used for nodejs
-RUN apt-get update
-RUN apt-get -y dist-upgrade
-RUN apt-get install -y software-properties-common python-software-properties
-RUN add-apt-repository -y ppa:chris-lea/node.js
-RUN apt-get update
-RUN apt-get install -y nodejs
 
 # Install node applications
 RUN npm install -g gulp http-server
