@@ -4,22 +4,12 @@
     "node": true
   },
   "globals": {
-    "DocumentFragment": true,
-    "expect": true,
-    "it": true,
-    "describe": true,
-    "beforeEach": true,
-    "runs": true,
-    "spyOn": true,
-    "spyOnEvent": true,
-    "waitsFor": true,
-    "expect": true,
-    "afterEach": true
+    "DocumentFragment": true
   },
   "rules": {
     "indent": [2, 2],
     "valid-jsdoc": 0,
-    "brace-style": [1, "1tbs"],
+    "brace-style": [1, "stroustrup"],
     "no-constant-condition": 1,
     "no-underscore-dangle": 0,
     "no-use-before-define": 1,

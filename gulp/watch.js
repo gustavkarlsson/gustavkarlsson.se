@@ -12,12 +12,12 @@ module.exports = function(gulp, plugins, args, config, taskTarget, browserSync) 
         path.join(dirs.source, dirs.styles, '**/*.styl'),
         path.join(dirs.source, dirs.modules, '**/*.styl')
       ], ['stylus']);
-      
+
 
       // Jade Templates
       gulp.watch([
         path.join(dirs.source, '**/*.jade'),
-        path.join(dirs.source, dirs.data, '**/*.json')
+        path.join(dirs.source, dirs.data, '**/*.{json,yaml,yml}')
       ], ['jade']);
 
       // Copy

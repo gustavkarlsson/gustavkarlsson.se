@@ -4,6 +4,8 @@ var fs = require('fs');
 var path = require('path');
 var foldero = require('foldero');
 var jade = require('jade');
+var yaml = require('js-yaml');
+var gulpif = require('gulp-if');
 
 module.exports = function(gulp, plugins, args, config, taskTarget, browserSync) {
   var dirs = config.directories;
@@ -17,14 +19,19 @@ module.exports = function(gulp, plugins, args, config, taskTarget, browserSync) 
       // Convert directory to JS Object
       siteData = foldero(dataPath, {
         recurse: true,
-        whitelist: '(.*/)*.+\.(json)$',
+        whitelist: '(.*/)*.+\.(json|ya?ml)$',
         loader: function loadAsString(file) {
           var json = {};
           try {
-            json = JSON.parse(fs.readFileSync(file, 'utf8'));
+            if (path.extname(file).match(/^.ya?ml$/)) {
+              json = yaml.safeLoad(fs.readFileSync(file, 'utf8'));
+            }
+            else {
+              json = JSON.parse(fs.readFileSync(file, 'utf8'));
+            }
           }
           catch(e) {
-            console.log('Error Parsing JSON file: ' + file);
+            console.log('Error Parsing DATA file: ' + file);
             console.log('==== Details Below ====');
             console.log(e);
           }
@@ -59,14 +66,14 @@ module.exports = function(gulp, plugins, args, config, taskTarget, browserSync) 
         }
       }
     }))
-    .pipe(plugins.htmlmin({
+    .pipe(gulpif(args.production, plugins.htmlmin({
       collapseBooleanAttributes: true,
       conservativeCollapse: true,
       removeCommentsFromCDATA: true,
       removeEmptyAttributes: true,
       removeRedundantAttributes: true,
       collapseWhitespace: true
-    }))
+    })))
     .pipe(gulp.dest(dest))
     .on('end', browserSync.reload);
   });

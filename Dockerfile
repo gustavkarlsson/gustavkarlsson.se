@@ -1,4 +1,4 @@
-FROM node:0.12.10
+FROM node:7.7.3
 
 MAINTAINER Gustav Karlsson
 
