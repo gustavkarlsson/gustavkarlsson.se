@@ -20,13 +20,13 @@ block content
             a(href="#cv") CV
           li
             a(href="#contact") CONTACT
-            
+
   section#home
     .section-centering
       h1 Hi, I'm Gustav!
       p I'm a programmer and web designer based in Frankfurt, Germany. Scroll down to learn more.
       img#photo(src="#{baseImagesUrl}/photo.jpg", alt="Photo")
-      
+
   section#coding
     .section-centering
       h1 Coding
@@ -41,21 +41,15 @@ block content
               })()
           td
             +language({
+              href: "https://kotlinlang.org/",
+              title: "Kotlin",
+              imgSrc: baseImagesUrl + "/languages/kotlin.png"
+              })()
+          td
+            +language({
               href: "http://ceylon-lang.org/",
               title: "Ceylon",
               imgSrc: baseImagesUrl + "/languages/ceylon.png"
-              })()
-          td
-            +language({
-              href: "http://en.wikipedia.org/wiki/C_Sharp_(programming_language)",
-              title: "C#",
-              imgSrc: baseImagesUrl + "/languages/c-sharp.png"
-              })()
-          td
-            +language({
-              href: "https://www.dartlang.org/",
-              title: "Dart",
-              imgSrc: baseImagesUrl + "/languages/dart.png"
               })()
         tr
           td
@@ -76,13 +70,7 @@ block content
               title: "JavaScript",
               imgSrc: baseImagesUrl + "/languages/javascript.png"
               })()
-          td
-            +language({
-              href: "https://angularjs.org/",
-              title: "AngularJS",
-              imgSrc: baseImagesUrl + "/languages/angularjs.png"
-              })()
-              
+
   section#cv
     .section-centering
       h1 Curriculum Vitae
@@ -90,7 +78,7 @@ block content
       p
         a.button(href="cv") WEB
         a.button(href="cv/gustavkarlsson-cv.pdf") PDF
-        
+
   section#contact
     .section-centering
       h1 Contact me
